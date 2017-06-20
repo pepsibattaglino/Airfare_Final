@@ -29,4 +29,52 @@ public class Flight {
         this.designatedPlane = designatedPlane;
         this.availableSeats = availableSeats;
     }
+
+    public int getFlightID() {
+        return flightID;
+    }
+
+    public void setFlightID(int flightID) {
+        this.flightID = flightID;
+    }
+
+    public String getOrigin() {
+        return origin;
+    }
+
+    public void setOrigin(String origin) {
+        this.origin = origin;
+    }
+
+    public String getDestination() {
+        return destination;
+    }
+
+    public void setDestination(String destination) {
+        this.destination = destination;
+    }
+
+    public LocalDateTime getDeparture() {
+        return departure;
+    }
+
+    public void setDeparture(LocalDateTime departure) {
+        this.departure = departure;
+    }
+
+    public int getDesignatedPlane() {
+        return designatedPlane;
+    }
+
+    public void setDesignatedPlane(int designatedPlane) {
+        this.designatedPlane = designatedPlane;
+    }
+
+    public int getAvailableSeats() {
+        return availableSeats;
+    }
+
+    public void setAvailableSeats(int availableSeats) {
+        this.availableSeats = availableSeats;
+    }
 }
