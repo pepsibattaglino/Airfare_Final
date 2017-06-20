@@ -21,4 +21,36 @@ public class Airplane {
         this.model = model;
         this.qntSeats = qntSeats;
     }
+
+    public int getAirplaneID() {
+        return airplaneID;
+    }
+
+    public void setAirplaneID(int airplaneID) {
+        this.airplaneID = airplaneID;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
+
+    public String getModel() {
+        return model;
+    }
+
+    public void setModel(String model) {
+        this.model = model;
+    }
+
+    public int getQntSeats() {
+        return qntSeats;
+    }
+
+    public void setQntSeats(int qntSeats) {
+        this.qntSeats = qntSeats;
+    }
 }
