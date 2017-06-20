@@ -1,4 +1,4 @@
-package model;
+package airplane;
 
 /**
  * Created by Bernardo on 09/06/2017.
