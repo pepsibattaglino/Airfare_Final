@@ -9,6 +9,8 @@ public class Airplane {
     private String model;
     private int qntSeats;
 
+    public Airplane() {}
+
     public Airplane(String code, String model, int qntSeats) {
         this.code = code;
         this.model = model;

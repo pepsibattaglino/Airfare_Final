@@ -13,6 +13,8 @@ public class Flight {
     private int designatedPlane;
     private int availableSeats;
 
+    public Flight() {}
+
     public Flight(String origin, String destination, LocalDateTime departure, int designatedPlane) {
 
         this.origin = origin;

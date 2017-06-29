@@ -11,6 +11,8 @@ public class Sale {
     private int saleFlight;
     private java.time.LocalDateTime timeOfPurchase;
 
+    public Sale() {}
+
     public Sale(int saleID, int saleCustomer, int saleFlight, LocalDateTime timeOfPurchase) {
         this.saleID = saleID;
         this.saleCustomer = saleCustomer;
