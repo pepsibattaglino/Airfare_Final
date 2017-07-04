@@ -32,7 +32,8 @@ public class FlightDao {
             ppst = con.prepareStatement(sql);
             ppst.setString(1, flight.getOrigin());
             ppst.setString(2, flight.getDestination());
-            ppst.setDate(3, flight.getDeparture());
+            Timestamp date = Timestamp.valueOf(flight.getDeparture());
+            ppst.setTimestamp(3, date);
             ppst.setInt(4, flight.getDesignatedPlane());
             ppst.setInt(1, flight.getAvailableSeats());
             ppst.executeUpdate();
@@ -66,7 +67,7 @@ public class FlightDao {
                         rset.getInt("flight_id"),
                         rset.getString("origin"),
                         rset.getString("destination"),
-                        rset.getDate("departure"),
+                        rset.getTimestamp("departure"),
                         rset.getInt("designatedplane"),
                         rset.getInt("availableseats")
                 );
@@ -96,7 +97,8 @@ public class FlightDao {
             ppst = con.prepareStatement(sql);
             ppst.setString(1, flight.getOrigin());
             ppst.setString(2, flight.getDestination());
-            ppst.setDate(3, flight.getDeparture());
+            Timestamp date = Timestamp.valueOf(flight.getDeparture());
+            ppst.setTimestamp(3, date);
             ppst.setInt(4, flight.getDesignatedPlane());
             ppst.setInt(5, flight.getAvailableSeats());
             ppst.executeUpdate();
