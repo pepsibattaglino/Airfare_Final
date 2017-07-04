@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 class AirplaneDaoTest {
     @Test
-    public void createAirplane() throws Exception {
+    void createAirplane() throws Exception {
         Airplane airplane = new Airplane("IPX-7432", "AirFit", 5);
         AirplaneDao dao = new AirplaneDao();
 
@@ -38,6 +38,19 @@ class AirplaneDaoTest {
             System.out.println("Plane updated with success.");
         } else {
             fail("Failed to update a plane.");
+        }
+    }
+
+    @Test
+    void deleteAirplane() {
+        AirplaneDao dao = new AirplaneDao();
+        Airplane a = new Airplane();
+        a.setAirplaneID(3);
+
+        if(dao.deleteAirplane(a)){
+            System.out.println("Plane deleted with success.");
+        } else {
+            fail("Failed to delete a plane.");
         }
     }
 
