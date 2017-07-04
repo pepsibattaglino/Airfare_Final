@@ -101,4 +101,27 @@ public class AirplaneDao {
         }
     }
 
+    /**
+     * DELETE
+     *
+     * @param airplane
+     * @return
+     */
+    public boolean deleteAirplane(Airplane airplane) {
+        String sql = "DELETE FROM airplane WHERE airplane_id = ?";
+        PreparedStatement ppst = null;
+
+        try {
+            ppst = con.prepareStatement(sql);
+            ppst.setInt(1, airplane.getAirplaneID());
+            ppst.executeUpdate();
+            return true;
+        } catch (SQLException e) {
+            System.err.println("Error: " + e);
+            return false;
+        } finally {
+            DBConnector.closeConnection(con, ppst);
+        }
+    }
+
 }
