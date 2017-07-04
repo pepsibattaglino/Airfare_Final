@@ -2,7 +2,6 @@ package customer;
 
 import java.sql.*;
 import java.util.*;
-
 import connection.DBConnector;
 
 /**
@@ -16,10 +15,9 @@ public class CustomerDao {
         con = DBConnector.getConnection();
     }
 
-
     /**
      * CREATE
-     * 
+     *
      * Creates an customer on database.
      *
      * @param customer
@@ -43,7 +41,6 @@ public class CustomerDao {
             DBConnector.closeConnection(con, ppst);
         }
     }
-
 
     /**
      * READ
@@ -78,7 +75,6 @@ public class CustomerDao {
         return customers;
     }
 
-
     /**
      * UPDATE
      *
@@ -95,6 +91,29 @@ public class CustomerDao {
             ppst.setString(2, customer.getCustomerName());
             ppst.setString(3, customer.getPhone());
             ppst.setInt(4, customer.getCustomerID());
+            ppst.executeUpdate();
+            return true;
+        } catch (SQLException e) {
+            System.err.println("Error: " + e);
+            return false;
+        } finally {
+            DBConnector.closeConnection(con, ppst);
+        }
+    }
+
+    /**
+     * DELETE
+     *
+     * @param customer
+     * @return
+     */
+    public boolean deleteCustomer(Customer customer) {
+        String sql = "DELETE FROM customer WHERE customer_id = ?";
+        PreparedStatement ppst = null;
+
+        try {
+            ppst = con.prepareStatement(sql);
+            ppst.setInt(1, customer.getCustomerID());
             ppst.executeUpdate();
             return true;
         } catch (SQLException e) {
