@@ -1,10 +1,7 @@
 package airplane;
 
-import connection.NotFoundException;
-
 import java.sql.*;
 import java.util.*;
-import java.math.*;
 
 import connection.DBConnector;
 
@@ -76,6 +73,32 @@ public class AirplaneDao {
             DBConnector.closeConnection(con, ppst, rset);
         }
         return airplanes;
+    }
+
+    /**
+     * UPDATE
+     *
+     * @param airplane
+     * @return
+     */
+    public boolean updateAirplane(Airplane airplane) {
+        String sql = "UPDATE airplane SET code = ?, model = ?, qntSeats = ? WHERE airplane_id = ?";
+        PreparedStatement ppst = null;
+
+        try {
+            ppst = con.prepareStatement(sql);
+            ppst.setString(1, airplane.getCode());
+            ppst.setString(2, airplane.getModel());
+            ppst.setInt(3, airplane.getQntSeats());
+            ppst.setInt(4, airplane.getAirplaneID());
+            ppst.executeUpdate();
+            return true;
+        } catch (SQLException e) {
+            System.err.println("Error: " + e);
+            return false;
+        } finally {
+            DBConnector.closeConnection(con, ppst);
+        }
     }
 
 }
