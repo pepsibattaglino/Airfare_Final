@@ -1,6 +1,7 @@
 package flight;
 
 import java.sql.*;
+import java.time.LocalDateTime;
 import java.util.*;
 import connection.DBConnector;
 
@@ -67,7 +68,7 @@ public class FlightDao {
                         rset.getInt("flight_id"),
                         rset.getString("origin"),
                         rset.getString("destination"),
-                        rset.getTimestamp("departure"),
+                        rset.getTimestamp("departure").toLocalDateTime(),
                         rset.getInt("designatedplane"),
                         rset.getInt("availableseats")
                 );
