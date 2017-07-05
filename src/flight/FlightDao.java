@@ -36,7 +36,7 @@ public class FlightDao {
             Timestamp date = Timestamp.valueOf(flight.getDeparture());
             ppst.setTimestamp(3, date);
             ppst.setInt(4, flight.getDesignatedPlane());
-            ppst.setInt(1, flight.getAvailableSeats());
+            ppst.setInt(5, flight.getAvailableSeats());
             ppst.executeUpdate();
             return true;
         } catch (SQLException e) {
@@ -102,6 +102,7 @@ public class FlightDao {
             ppst.setTimestamp(3, date);
             ppst.setInt(4, flight.getDesignatedPlane());
             ppst.setInt(5, flight.getAvailableSeats());
+            ppst.setInt(6, flight.getFlightID());
             ppst.executeUpdate();
             return true;
         } catch (SQLException e) {
