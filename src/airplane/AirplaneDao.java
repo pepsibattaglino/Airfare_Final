@@ -211,4 +211,12 @@ public class AirplaneDao {
         Airplane airplane = locateAirplane("qntSeats", value);
         return airplane;
     }
+
+    public static boolean isNotEmpty(Airplane airplane) {
+        if (airplane.getAirplaneID() == 0 && airplane.getCode() == null && airplane.getModel() == null && airplane.getQntSeats() == 0) {
+            return false;
+        } else {
+            return true;
+        }
+    }
 }
