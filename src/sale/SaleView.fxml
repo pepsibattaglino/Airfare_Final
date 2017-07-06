@@ -9,17 +9,17 @@
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane id="registerAirplanePane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="airplane.AirplaneController">
+<AnchorPane id="registerAirplanePane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="airplane.AirplaneController">
    <children>
       <VBox prefHeight="300.0" prefWidth="400.0" spacing="2.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Label text="Airplane code:" />
+            <Label text="Sale Customer:" />
             <TextField fx:id="AirplaneCodeField" />
             <Region prefHeight="10.0" prefWidth="200.0" VBox.vgrow="ALWAYS" />
-            <Label layoutX="22.0" layoutY="22.0" text="Airplane model:" />
+            <Label layoutX="22.0" layoutY="22.0" text="Sale Flight" />
             <TextField fx:id="AirplaneModelField" layoutX="22.0" layoutY="45.0" />
             <Region layoutX="22.0" layoutY="76.0" prefHeight="10.0" prefWidth="200.0" VBox.vgrow="ALWAYS" />
-            <Label layoutX="22.0" layoutY="76.0" text="Quantity of seats:" />
+            <Label layoutX="22.0" layoutY="76.0" text="Time of Purchase:" />
             <TextField fx:id="AirplaneQntSeatsField" layoutX="22.0" layoutY="99.0" />
             <Region layoutX="60.0" layoutY="164.0" prefHeight="10.0" prefWidth="200.0" VBox.vgrow="ALWAYS" />
             <HBox spacing="20.0">
