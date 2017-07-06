@@ -167,7 +167,7 @@ public class SaleDao {
             sale.setSaleID(rset.getInt("sale_id"));
             sale.setSaleCustomer(rset.getInt("salecustomer"));
             sale.setSaleFlight(rset.getInt("saleflight"));
-            sale.setTimeOfPurchase(rset.getString("timeofpurechase"));
+            sale.setTimeOfPurchase(rset.getTimestamp("timeofpurchase").toLocalDateTime());
         } catch (SQLException e) {
             System.err.println("Error: " + e);
         } finally {

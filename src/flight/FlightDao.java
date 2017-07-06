@@ -185,7 +185,7 @@ public class FlightDao {
             flight.setFlightID(rset.getInt("flight_id"));
             flight.setOrigin(rset.getString("origin"));
             flight.setDestination(rset.getString("destination"));
-            flight.setDeparture(rset.getTimestamp("depature"));
+            flight.setDeparture(rset.getTimestamp("departure").toLocalDateTime());
             flight.setDesignatedPlane(rset.getInt("designatedplane"));
             flight.setAvailableSeats(rset.getInt("availableseats"));
         } catch (SQLException e) {
