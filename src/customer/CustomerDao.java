@@ -194,4 +194,12 @@ public class CustomerDao {
         return customer;
     }
 
+    public static boolean isNotEmpty(Customer customer) {
+        if (customer.getCustomerID() == 0 && customer.getIdentification() == null && customer.getCustomerName() == null && customer.getPhone() == null) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
 }

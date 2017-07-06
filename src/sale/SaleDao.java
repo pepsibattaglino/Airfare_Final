@@ -196,4 +196,12 @@ public class SaleDao {
         return sale;
     }
 
+    public static boolean isNotEmpty(Sale sale) {
+        if (sale.getSaleID() == 0 && sale.getSaleCustomer() == 0 && sale.getSaleFlight() == 0 && sale.getTimeOfPurchase() == null) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
 }
