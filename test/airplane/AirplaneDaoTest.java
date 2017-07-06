@@ -1,6 +1,7 @@
 package airplane;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestFactory;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -54,4 +55,41 @@ class AirplaneDaoTest {
         }
     }
 
+//    @Test
+//    void findAirplaneByID() {
+//        AirplaneDao dao = new AirplaneDao();
+//        Airplane a = dao.findAirplaneById(4);
+//        System.out.println("Plane model: " + a.getModel());
+//    }
+
+//    @Test
+//    void findAirplane() {
+//        AirplaneDao dao = new AirplaneDao();
+//        Airplane a1 = dao.locateAirplane("airplaneID", "4");
+//        System.out.println("Plane model: " + a1.getModel());
+//        Airplane a2 = dao.locateAirplane("code", "IPX-7432");
+//        System.out.println("Plane model: " + a2.getModel());
+//        Airplane a3 = dao.locateAirplane("model", "Boeing");
+//        System.out.println("Plane model: " + a3.getModel());
+//        Airplane a4 = dao.locateAirplane("qntSeats", "28");
+//        System.out.println("Plane model: " + a4.getModel());
+//    }
+
+    @Test
+    void findAirplaneByValue() {
+        AirplaneDao dao = new AirplaneDao();
+//        Airplane a = dao.locateAirplaneById("4");
+//        Airplane a = dao.locateAirplaneByCode("IPX-7432");
+//        Airplane a = dao.locateAirplaneByModel("Boeing");
+        Airplane a = dao.locateAirplaneByQntSeats("28");
+        System.out.println("Plane model: " + a.getModel());
+    }
+
+    @Test
+    void testExists() {
+        AirplaneDao dao = new AirplaneDao();
+        Airplane a = dao.locateAirplaneById("48");
+        System.out.println("Plane model: " + a.getAirplaneID());
+        dao.checkIfAirplaneExists(a);
+    }
 }
