@@ -1,10 +1,9 @@
 package flight;
 
-import org.junit.Test;
-
 import java.time.LocalDateTime;
 
-import static org.junit.Assert.*;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.fail;
 
 /**
  * Created by G.Battaglino on 05/07/2017.
