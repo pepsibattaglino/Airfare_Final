@@ -124,4 +124,91 @@ public class AirplaneDao {
         }
     }
 
+//    public Airplane findAirplaneById(int id) {
+//        String sql = "SELECT * FROM airplane WHERE airplane_id = ?";
+//        PreparedStatement ppst = null;
+//        ResultSet rset = null;
+//        Airplane airplane = new Airplane();
+//        try {
+//            ppst = con.prepareStatement(sql);
+//            ppst.setInt(1, id);
+//            rset = ppst.executeQuery();
+//            rset.next();
+//            airplane.setAirplaneID(rset.getInt("airplane_id"));
+//            airplane.setCode(rset.getString("code"));
+//            airplane.setModel(rset.getString("model"));
+//            airplane.setQntSeats(rset.getInt("qntseats"));
+//        } catch (SQLException e) {
+//            System.err.println("Error: " + e);
+//        } finally {
+//            DBConnector.closeConnection(con, ppst);
+//        }
+//        return airplane;
+//    }
+
+    private Airplane locateAirplane(String parameter, String value) {
+        String sql;
+        PreparedStatement ppst = null;
+        ResultSet rset = null;
+        Airplane airplane = new Airplane();
+
+        try {
+            switch (parameter) {
+                case "airplaneID":
+                    sql = "SELECT * FROM airplane WHERE airplane_id = ?";
+                    ppst = con.prepareStatement(sql);
+                    ppst.setInt(1, Integer.parseInt(value));
+                    break;
+                case "code":
+                    sql = "SELECT * FROM airplane WHERE code = ?";
+                    ppst = con.prepareStatement(sql);
+                    ppst.setString(1, value);
+                    break;
+                case "model":
+                    sql = "SELECT * FROM airplane WHERE model = ?";
+                    ppst = con.prepareStatement(sql);
+                    ppst.setString(1, value);
+                    break;
+                case "qntSeats":
+                    sql = "SELECT * FROM airplane WHERE qntseats = ?";
+                    ppst = con.prepareStatement(sql);
+                    ppst.setInt(1, Integer.parseInt(value));
+                    break;
+                default:
+                    System.out.println("Invalid search parameter.");
+                    break;
+            }
+            rset = ppst.executeQuery();
+            rset.next();
+            airplane.setAirplaneID(rset.getInt("airplane_id"));
+            airplane.setCode(rset.getString("code"));
+            airplane.setModel(rset.getString("model"));
+            airplane.setQntSeats(rset.getInt("qntseats"));
+        } catch (SQLException e) {
+            System.err.println("Error: " + e);
+        } finally {
+            DBConnector.closeConnection(con, ppst);
+        }
+        return airplane;
+    }
+
+    public Airplane locateAirplaneById(String value) {
+        Airplane airplane = locateAirplane("airplaneID", value);
+        return airplane;
+    }
+
+    public Airplane locateAirplaneByCode(String value) {
+        Airplane airplane = locateAirplane("code", value);
+        return airplane;
+    }
+
+    public Airplane locateAirplaneByModel(String value) {
+        Airplane airplane = locateAirplane("model", value);
+        return airplane;
+    }
+
+    public Airplane locateAirplaneByQntSeats(String value) {
+        Airplane airplane = locateAirplane("qntSeats", value);
+        return airplane;
+    }
 }
