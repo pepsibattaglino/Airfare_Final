@@ -1,4 +1,4 @@
-package flight;
+package sale;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -9,7 +9,7 @@ import javafx.stage.Stage;
 /**
  * Created by G.Battaglino on 06/07/2017.
  */
-public class FlightMain extends Application {
+public class SaleMain extends Application {
 
     public static void main(String[] args) {
         launch(args);
@@ -17,9 +17,9 @@ public class FlightMain extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("FlightView.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("SaleView.fxml"));
         Scene scene = new Scene(root);
-        primaryStage.setTitle("Register Flight");
+        primaryStage.setTitle("Register Sale");
         primaryStage.setScene(scene);
         primaryStage.show();
     }
