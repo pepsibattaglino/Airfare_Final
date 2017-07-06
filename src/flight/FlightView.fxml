@@ -23,6 +23,12 @@
             <Label layoutX="22.0" layoutY="76.0" text="Departure:" />
             <DatePicker prefHeight="25.0" prefWidth="306.0" />
             <Region layoutX="60.0" layoutY="164.0" prefHeight="10.0" prefWidth="200.0" VBox.vgrow="ALWAYS" />
+            <Label text="Designated Airplane:" />
+            <TextField />
+            <Region prefHeight="200.0" prefWidth="200.0" />
+            <Label text="Available Seats:" />
+            <TextField />
+            <Region prefHeight="200.0" prefWidth="200.0" />
             <HBox spacing="20.0">
                <children>
                   <Region HBox.hgrow="ALWAYS" />
