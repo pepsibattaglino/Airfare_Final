@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane id="registerAirplanePane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="airplane.AirplaneController">
+   <children>
+      <VBox prefHeight="300.0" prefWidth="400.0" spacing="2.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Label text="Origin:" />
+            <TextField fx:id="AirplaneCodeField" />
+            <Region prefHeight="10.0" prefWidth="200.0" VBox.vgrow="ALWAYS" />
+            <Label layoutX="22.0" layoutY="22.0" text="Destination:" />
+            <TextField fx:id="AirplaneModelField" layoutX="22.0" layoutY="45.0" />
+            <Region layoutX="22.0" layoutY="76.0" prefHeight="10.0" prefWidth="200.0" VBox.vgrow="ALWAYS" />
+            <Label layoutX="22.0" layoutY="76.0" text="Departure:" />
+            <DatePicker prefHeight="25.0" prefWidth="306.0" />
+            <Region layoutX="60.0" layoutY="164.0" prefHeight="10.0" prefWidth="200.0" VBox.vgrow="ALWAYS" />
+            <HBox spacing="20.0">
+               <children>
+                  <Region HBox.hgrow="ALWAYS" />
+                  <Button mnemonicParsing="false" onAction="#treatClearButton" text="Clear">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </Button>
+                  <Button mnemonicParsing="false" onAction="#treatSaveButton" text="Save">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </Button>
+               </children>
+            </HBox>
+         </children>
+         <padding>
+            <Insets bottom="50.0" left="50.0" right="50.0" top="50.0" />
+         </padding>
+      </VBox>
+   </children>
+</AnchorPane>
