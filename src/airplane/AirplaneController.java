@@ -1,72 +1,35 @@
 package airplane;
 
-import javafx.event.ActionEvent;
-import javafx.fxml.*;
+import javafx.fxml.FXML;
+import javafx.event.*;
 import javafx.scene.control.*;
-import javafx.scene.layout.*;
-import javafx.stage.Stage;
 
-import java.net.URL;
-import java.util.ResourceBundle;
 
 /**
- * Created by Bernardo on 29/06/2017.
+ * Created by Bernardo on 06/07/2017.
  */
-public class AirplaneController implements Initializable {
-
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        AirplaneDao airplaneDao = new AirplaneDao();
-    }
+public class AirplaneController {
 
     @FXML
-    private AnchorPane registerAirplanePane;
-    @FXML
-    private TextField fieldCode;
-    @FXML
-    private TextField fieldModel;
-    @FXML
-    private TextField fieldQntSeats;
+    private TextField AirplaneCodeField;
 
     @FXML
-    protected void treatSaveButton() {
+    private TextField AirplaneModelField;
+
+    @FXML
+    private TextField AirplaneQntSeatsField;
+
+    public void treatSaveButton(ActionEvent event) {
         System.out.println("The Save button has been pressed.");
+        registerAirplane(AirplaneCodeField, AirplaneModelField, AirplaneQntSeatsField);
     }
 
-
-
-
-/*
-    @FXML
-    public void treatSaveButton(ActionEvent event) throws Exception {
-        Stage stage = (Stage) registerAirplanePane.getScene().getWindow();
-
-        try {
-            () -> airplaneDao
-            AirplaneDao.(new Paciente(
-                    textFieldRg.getText(),
-                    textFieldNome.getText(),
-                    datePickerDataNascimento.getValue()
-            ));
-            PrintUtil.printMessageSucesso("Cadastro realizado com sucesso!");
-            limparCampos();
-        } catch (NegocioException ex) {
-            PrintUtil.printMessageError(ex.getMessage());
-        }
-
+    private void registerAirplane (TextField code, TextField model, TextField qntSeats) {
+        Airplane a = new Airplane(
+                code.getText(),
+                model.getText(),
+                Integer.parseInt(qntSeats.getText()));
+        AirplaneDao aDao = new AirplaneDao();
+        aDao.createAirplane(a);
     }
-
-    @FXML
-    public void tratarBotaoCancelar(ActionEvent event) throws Exception {
-        Stage stage = (Stage) paneAirplaneRegister.getScene().getWindow();
-        stage.close();
-    }
-
-    @FXML
-    private void clearForm(ActionEvent event) throws Exception {
-        fieldCode.clear();
-        fieldModel.clear();
-        fieldQntSeats.clear();
-    }*/
-
 }
