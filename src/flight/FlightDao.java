@@ -138,4 +138,91 @@ public class FlightDao {
         }
     }
 
+    private Flight locateFlight(String parameter, String value) {
+        String sql;
+        PreparedStatement ppst = null;
+        ResultSet rset = null;
+        Flight flight = new Flight();
+
+        try {
+            switch (parameter) {
+                case "flightID":
+                    sql = "SELECT * FROM flight WHERE flight_id = ?";
+                    ppst = con.prepareStatement(sql);
+                    ppst.setInt(1, Integer.parseInt(value));
+                    break;
+                case "origin":
+                    sql = "SELECT * FROM flight WHERE origin = ?";
+                    ppst = con.prepareStatement(sql);
+                    ppst.setString(1, value);
+                    break;
+                case "destination":
+                    sql = "SELECT * FROM flight WHERE destination = ?";
+                    ppst = con.prepareStatement(sql);
+                    ppst.setString(1, value);
+                    break;
+                case "departure":
+                    sql = "SELECT * FROM flight WHERE departure = ?";
+                    ppst = con.prepareStatement(sql);
+                    ppst.setInt(1, Integer.parseInt(value));
+                    break;
+                case "designatedplane":
+                    sql = "SELECT * FROM flight WHERE designatedplane = ?";
+                    ppst = con.prepareStatement(sql);
+                    ppst.setInt(1, Integer.parseInt(value));
+                    break;
+                case "availableseats":
+                    sql = "SELECT * FROM flight WHERE availableseats = ?";
+                    ppst = con.prepareStatement(sql);
+                    ppst.setInt(1, Integer.parseInt(value));
+                    break;
+                default:
+                    System.out.println("Invalid search parameter.");
+                    break;
+            }
+            rset = ppst.executeQuery();
+            rset.next();
+            flight.setFlightID(rset.getInt("flight_id"));
+            flight.setOrigin(rset.getString("origin"));
+            flight.setDestination(rset.getString("destination"));
+            flight.setDeparture(rset.getTimestamp("depature"));
+            flight.setDesignatedPlane(rset.getInt("designatedplane"));
+            flight.setAvailableSeats(rset.getInt("availableseats"));
+        } catch (SQLException e) {
+            System.err.println("Error: " + e);
+        } finally {
+            DBConnector.closeConnection(con, ppst);
+        }
+        return flight;
+    }
+
+    public Flight locateFlightById(String value) {
+        Flight flight = locateFlight("flightID", value);
+        return flight;
+    }
+
+    public Flight locateFlightByOrigin(String value) {
+        Flight flight = locateFlight("origin", value);
+        return flight;
+    }
+    public Flight locateFlightByDestination(String value) {
+        Flight flight = locateFlight("destination", value);
+        return flight;
+    }
+
+    public Flight locateFlightByDeparture(String value) {
+        Flight flight = locateFlight("departure", value);
+        return flight;
+    }
+
+    public Flight locateFlightByDesignatedPlane(String value) {
+        Flight flight = locateFlight("designatedPlane", value);
+        return flight;
+    }
+
+    public Flight locateFlightByAvailableSeats(String value) {
+        Flight flight = locateFlight("availableseats", value);
+        return flight;
+    }
+
 }
