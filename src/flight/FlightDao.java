@@ -225,4 +225,12 @@ public class FlightDao {
         return flight;
     }
 
+    public static boolean isNotEmpty(Flight flight) {
+        if (flight.getFlightID() == 0 && flight.getOrigin() == null && flight.getDestination() == null && flight.getDeparture() == null && flight.getDesignatedPlane() == 0 && flight.getAvailableSeats() == 0) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
 }
