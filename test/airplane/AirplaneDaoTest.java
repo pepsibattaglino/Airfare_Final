@@ -88,8 +88,8 @@ class AirplaneDaoTest {
     @Test
     void testExists() {
         AirplaneDao dao = new AirplaneDao();
-        Airplane a = dao.locateAirplaneById("48");
+        Airplane a = dao.locateAirplaneById("4");
         System.out.println("Plane model: " + a.getAirplaneID());
-        dao.checkIfAirplaneExists(a);
+        System.out.println(dao.isNotEmpty(a));
     }
 }
