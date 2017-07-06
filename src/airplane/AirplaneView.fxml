@@ -25,7 +25,7 @@
             <HBox spacing="20.0">
                <children>
                   <Region HBox.hgrow="ALWAYS" />
-                  <Button mnemonicParsing="false" text="Clear">
+                  <Button mnemonicParsing="false" onAction="#treatClearButton" text="Clear">
                      <HBox.margin>
                         <Insets />
                      </HBox.margin>
