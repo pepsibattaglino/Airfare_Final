@@ -23,10 +23,17 @@ public class AirplaneMain extends Application{
     Stage window;
     Scene scene;
 
+    @Override
+    public void start(Stage primaryStage) throws Exception {
+        Parent root = FXMLLoader.load(getClass().getResource("AirplaneView.fxml"));
+        primaryStage.show();
+    }
+
     public static void main(String[] args) {
         launch(args);
     }
 
+    /*
     @Override
     public void start(Stage primaryStage) throws Exception {
         window = primaryStage;
@@ -40,8 +47,8 @@ public class AirplaneMain extends Application{
         Label seatsLabel = new Label("Seats:");
         TextField seatsInput = new TextField();
 
-        /*Button clearButton = new Button("Clear");
-        clearButton.setOnAction( e -> isInt(seatsInput));*/
+        Button clearButton = new Button("Clear");
+        clearButton.setOnAction( e -> isInt(seatsInput));
 
         Button saveButton = new Button("Save");
         saveButton.setOnAction( e -> planeCreator(codeInput, modelInput, seatsInput));
@@ -93,5 +100,5 @@ public class AirplaneMain extends Application{
                     JOptionPane.ERROR_MESSAGE);
         }
     }
-
+    */
 }
