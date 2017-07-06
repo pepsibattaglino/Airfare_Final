@@ -130,4 +130,70 @@ public class SaleDao {
         }
     }
 
+    private Sale locateSale(String parameter, String value) {
+        String sql;
+        PreparedStatement ppst = null;
+        ResultSet rset = null;
+        Sale sale = new Sale();
+
+        try {
+            switch (parameter) {
+                case "saleID":
+                    sql = "SELECT * FROM sale WHERE sale_id = ?";
+                    ppst = con.prepareStatement(sql);
+                    ppst.setInt(1, Integer.parseInt(value));
+                    break;
+                case "salecustomer":
+                    sql = "SELECT * FROM sale WHERE salecustomer = ?";
+                    ppst = con.prepareStatement(sql);
+                    ppst.setInt(1, Integer.parseInt(value));
+                    break;
+                case "saleflight":
+                    sql = "SELECT * FROM sale WHERE saleflight = ?";
+                    ppst = con.prepareStatement(sql);
+                    ppst.setInt(1, Integer.parseInt(value));
+                    break;
+                case "timeofpurechase":
+                    sql = "SELECT * FROM sale WHERE timeofpurchase = ?";
+                    ppst = con.prepareStatement(sql);
+                    ppst.setString(1, value);
+                    break;
+                default:
+                    System.out.println("Invalid search parameter.");
+                    break;
+            }
+            rset = ppst.executeQuery();
+            rset.next();
+            sale.setSaleID(rset.getInt("sale_id"));
+            sale.setSaleCustomer(rset.getInt("salecustomer"));
+            sale.setSaleFlight(rset.getInt("saleflight"));
+            sale.setTimeOfPurchase(rset.getString("timeofpurechase"));
+        } catch (SQLException e) {
+            System.err.println("Error: " + e);
+        } finally {
+            DBConnector.closeConnection(con, ppst);
+        }
+        return sale;
+    }
+
+    public Sale locateSaleById(String value) {
+        Sale sale = locateSale("saleID", value);
+        return sale;
+    }
+
+    public Sale locateSaleBySaleCustomer(String value) {
+        Sale sale = locateSale("salecustomer", value);
+        return sale;
+    }
+
+    public Sale locateSaleBySaleFlight(String value) {
+        Sale sale = locateSale("saleflight", value);
+        return sale;
+    }
+
+    public Sale locateSaleByTimeOfPurchase(String value) {
+        Sale sale = locateSale("timeofpurechase", value);
+        return sale;
+    }
+
 }

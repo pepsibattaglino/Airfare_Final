@@ -128,4 +128,70 @@ public class CustomerDao {
         }
     }
 
+    private Customer locateCustomer(String parameter, String value) {
+        String sql;
+        PreparedStatement ppst = null;
+        ResultSet rset = null;
+        Customer customer = new Customer();
+
+        try {
+            switch (parameter) {
+                case "customerID":
+                    sql = "SELECT * FROM customer WHERE customer_id = ?";
+                    ppst = con.prepareStatement(sql);
+                    ppst.setInt(1, Integer.parseInt(value));
+                    break;
+                case "identification":
+                    sql = "SELECT * FROM customer WHERE identification = ?";
+                    ppst = con.prepareStatement(sql);
+                    ppst.setString(1, value);
+                    break;
+                case "customername":
+                    sql = "SELECT * FROM customer WHERE customername = ?";
+                    ppst = con.prepareStatement(sql);
+                    ppst.setString(1, value);
+                    break;
+                case "phone":
+                    sql = "SELECT * FROM customer WHERE phone = ?";
+                    ppst = con.prepareStatement(sql);
+                    ppst.setString(1, value);
+                    break;
+                default:
+                    System.out.println("Invalid search parameter.");
+                    break;
+            }
+            rset = ppst.executeQuery();
+            rset.next();
+            customer.setCustomerID(rset.getInt("customer_id"));
+            customer.setIdentification(rset.getString("identification"));
+            customer.setCustomerName(rset.getString("customername"));
+            customer.setPhone(rset.getString("phone"));
+        } catch (SQLException e) {
+            System.err.println("Error: " + e);
+        } finally {
+            DBConnector.closeConnection(con, ppst);
+        }
+        return customer;
+    }
+
+    public Customer locateCustomerById(String value) {
+        Customer customer = locateCustomer("customerID", value);
+        return customer;
+    }
+
+    public Customer locateCustomerByidentification(String value) {
+        Customer customer = locateCustomer("identification", value);
+        return customer;
+    }
+
+    public Customer locateCustomerByCustomerName(String value) {
+        Customer customer = locateCustomer("customername", value);
+        return customer;
+    }
+
+    public Customer locateCustomerByPhone(String value) {
+        Customer customer = locateCustomer("phone", value);
+        return customer;
+    }
+
 }
