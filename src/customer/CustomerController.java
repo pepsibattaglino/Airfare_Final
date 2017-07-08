@@ -54,12 +54,10 @@ public class CustomerController {
 
                 registerCustomer(customerIdentificationField, customerNameField, customerPhoneField);
                 clearFields();
-                JOptionPane.showMessageDialog(null,
-                        "Customer saved with success!");
+                JOptionPane.showMessageDialog(null, "Customer saved with success!");
             } else {
                 System.out.println("Failed to verify the customer.");
             }
-
         } else {
             JOptionPane.showMessageDialog(null,
                     "One or more required fields are empty.",
