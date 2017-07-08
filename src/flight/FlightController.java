@@ -9,6 +9,7 @@ import javafx.scene.layout.VBox;
 
 import javax.swing.*;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 /**
  * Created by G.Battaglino on 08/07/2017.
@@ -51,19 +52,17 @@ public class FlightController {
         if (
                 notEmptyField(flightOriginField) &&
                 notEmptyField(flightDestinationField) &&
-                notEmptyField(flightDepartureField) &&
-                notEmptyField(flightDesignatedAirplaneField) &&
-                notEmptyField(flightAvaliableSeatsField)) {
+                //notEmptyField(flightDepartureField) &&
+                notEmptyField(flightDesignatedAirplaneField)) {
 
             FlightBusiness fb = new FlightBusiness();
             if (
                     fb.flightOriginChecker(flightOriginField.getText()) &&
                     fb.flightDestinationChecker(flightDestinationField.getText()) &&
-                    fb.flightDepartureChecker(flightDepartureField.getText()) &&
-                    fb.flightDesignatedAirplaneChecker(flightDesignatedAirplaneField.getText()) &&
-                    fb.flightAvailableSeatsChecker(flightAvaliableSeatsField.getText())) {
+                    fb.flightDepartureChecker(flightDepartureField.getPromptText()) &&
+                    fb.flightDesignatedAirplaneChecker(flightDesignatedAirplaneField.getText())) {
 
-                registerFlight(flightOriginField, flightDestinationField, flightDepartureField, flightDesignatedAirplaneField, flightAvaliableSeatsField);
+                registerFlight(flightOriginField, flightDestinationField, flightDepartureField, flightDesignatedAirplaneField);
                 clearFields();
                 JOptionPane.showMessageDialog(null, "Flight saved with success!");
             } else {
@@ -78,13 +77,13 @@ public class FlightController {
 
     }
 
-    private void registerFlight (TextField origin, TextField destination, DatePicker departure, TextField designatedAirplane, TextField availableSeats) {
+    private void registerFlight (TextField origin, TextField destination, DatePicker departure, TextField designatedAirplane) {
         Flight f = new Flight(
                 origin.getText(),
                 destination.getText(),
-                LocalDate.parse( departure.getText()),
-                designatedAirplane.getText(),
-                Integer.parseInt(availableSeats.getText()));
+                LocalDateTime.parse(departure.getPromptText(), FlightBusiness.timeFormatter()),
+                Integer.parseInt(designatedAirplane.getText()));
+                //Integer.parseInt(availableSeats.getText()));
         FlightDao fDao = new FlightDao();
         fDao.createFlight(f);
     }
@@ -92,7 +91,7 @@ public class FlightController {
     private void clearFields () {
         flightOriginField.setText("");
         flightDestinationField.setText("");
-        flightDepartureField.setText("");
+        flightDepartureField.setValue(null);
         flightDesignatedAirplaneField.setText("");
         flightAvaliableSeatsField.setText("");
     }
