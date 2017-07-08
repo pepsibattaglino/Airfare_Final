@@ -1,6 +1,8 @@
 package flight;
 
 import javax.swing.*;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 /**
  * Created by G.Battaglino on 08/07/2017.
@@ -13,7 +15,7 @@ public class FlightBusiness {
     private String flightDestinationValidator = "^[\\p{IsLatin}]{2,}([ ]{1}[\\p{IsLatin}]++)*$";
     private String flightDestinationMessage = "Invalid name, use only letters.";
 
-    private String flightDepartureValidator = "^[\\p{IsLatin}\\p{Digit}]{2,}([ ]{1}[\\p{IsLatin}\\p{Digit}]++)*$";
+    private static DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
     private String flightDepartureMessage = "Invalid identification, use only letters and numbers.";
 
     private String flightDesignatedAirplaneValidator = "^[\\p{IsLatin}]{2,}([ ]{1}[\\p{IsLatin}]++)*$";
@@ -22,6 +24,9 @@ public class FlightBusiness {
 //    private String flightAvailableSeatsValidator = "^[\\p{IsLatin}]{2,}([ ]{1}[\\p{IsLatin}]++)*$";
     private String flightAvailableSeatsMessage = "Invalid number of seats.";
 
+    public static DateTimeFormatter timeFormatter() {
+        return timeFormatter;
+    }
 
     public boolean flightOriginChecker (String toCheck) {
         if(isValidStr(toCheck, flightOriginValidator, flightOriginMessage)){
@@ -40,9 +45,16 @@ public class FlightBusiness {
     }
 
     public boolean flightDepartureChecker (String toCheck) {
-        if (isValidStr(toCheck, flightDepartureValidator, flightDepartureMessage)){
+        try {
+            LocalDateTime dateTime = LocalDateTime.parse(toCheck, timeFormatter);
+            System.out.println(toCheck + " validation passed.");
             return true;
-        }else{
+        } catch (NumberFormatException e) {
+            System.out.println(toCheck + " validation error.");
+            JOptionPane.showMessageDialog(null,
+                    flightAvailableSeatsMessage,
+                    "Validation error",
+                    JOptionPane.ERROR_MESSAGE);
             return false;
         }
     }
