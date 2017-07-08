@@ -10,34 +10,34 @@
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane id="registerAirplanePane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="332.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="airplane.AirplaneController">
+<AnchorPane id="registerAirplanePane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="332.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="flight.FlightController">
    <children>
-      <VBox prefHeight="332.0" prefWidth="400.0" spacing="2.0" AnchorPane.bottomAnchor="-32.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <VBox fx:id="formFlight" prefHeight="332.0" prefWidth="400.0" spacing="2.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <Label text="Origin:" />
-            <TextField fx:id="AirplaneCodeField" />
+            <TextField fx:id="flightOriginField" />
             <Region prefHeight="10.0" prefWidth="200.0" VBox.vgrow="ALWAYS" />
             <Label layoutX="22.0" layoutY="22.0" text="Destination:" />
-            <TextField fx:id="AirplaneModelField" layoutX="22.0" layoutY="45.0" />
+            <TextField fx:id="flightDestinationField" layoutX="22.0" layoutY="45.0" />
             <Region layoutX="22.0" layoutY="76.0" prefHeight="10.0" prefWidth="200.0" VBox.vgrow="ALWAYS" />
             <Label layoutX="22.0" layoutY="76.0" text="Departure:" />
-            <DatePicker prefHeight="25.0" prefWidth="306.0" />
+            <DatePicker fx:id="flightDepartureField" prefHeight="25.0" prefWidth="306.0" />
             <Region layoutX="60.0" layoutY="164.0" prefHeight="10.0" prefWidth="200.0" VBox.vgrow="ALWAYS" />
             <Label text="Designated Airplane:" />
-            <TextField />
+            <TextField fx:id="flightDesignatedAirplaneField" />
             <Region prefHeight="200.0" prefWidth="200.0" />
             <Label text="Available Seats:" />
-            <TextField />
+            <TextField fx:id="flightAvaliableSeatsField" />
             <Region prefHeight="200.0" prefWidth="200.0" />
             <HBox spacing="20.0">
                <children>
                   <Region HBox.hgrow="ALWAYS" />
-                  <Button mnemonicParsing="false" onAction="#treatClearButton" text="Clear">
+                  <Button fx:id="btnClear" mnemonicParsing="false" onAction="#treatClearButton" text="Clear">
                      <HBox.margin>
                         <Insets />
                      </HBox.margin>
                   </Button>
-                  <Button mnemonicParsing="false" onAction="#treatSaveButton" text="Save">
+                  <Button fx:id="btnSave" mnemonicParsing="false" onAction="#treatSaveButton" text="Save">
                      <HBox.margin>
                         <Insets />
                      </HBox.margin>
