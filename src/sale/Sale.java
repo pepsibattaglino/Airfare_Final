@@ -20,6 +20,12 @@ public class Sale {
         this.timeOfPurchase = timeOfPurchase;
     }
 
+    public Sale(int saleCustomer, int saleFlight, LocalDateTime timeOfPurchase) {
+        this.saleCustomer = saleCustomer;
+        this.saleFlight = saleFlight;
+        this.timeOfPurchase = timeOfPurchase;
+    }
+
     public int getSaleID() {
         return saleID;
     }
