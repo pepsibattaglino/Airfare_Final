@@ -58,7 +58,7 @@ public class FlightController {
             FlightBusiness fb = new FlightBusiness();
             if (
                     fb.flightOriginChecker(flightOriginField.getText()) &&
-                    fb.flightDestinationChecker(flightDestinationField.getText()) &&
+                    fb.flightDestinationChecker(flightDestinationField.getText(), flightOriginField.getText()) &&
                     fb.flightDepartureChecker(flightDepartureField.getPromptText()) &&
                     fb.flightDesignatedAirplaneChecker(flightDesignatedAirplaneField.getText())) {
 
@@ -78,10 +78,11 @@ public class FlightController {
     }
 
     private void registerFlight (TextField origin, TextField destination, DatePicker departure, TextField designatedAirplane) {
+        FlightBusiness fb = new FlightBusiness();
         Flight f = new Flight(
                 origin.getText(),
                 destination.getText(),
-                LocalDateTime.parse(departure.getPromptText(), FlightBusiness.timeFormatter()),
+                fb.timeParser(departure.getPromptText()),
                 Integer.parseInt(designatedAirplane.getText()));
                 //Integer.parseInt(availableSeats.getText()));
         FlightDao fDao = new FlightDao();
