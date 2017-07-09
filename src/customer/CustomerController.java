@@ -41,35 +41,28 @@ public class CustomerController {
     @FXML
     void treatSaveButton(ActionEvent event) {
         System.out.println("The Save button has been pressed.");
-
-        if (notEmptyField(customerIdentificationField) &&
-            notEmptyField(customerNameField) &&
-            notEmptyField(customerPhoneField)) {
+        if (
+                notEmptyField(customerIdentificationField) &&
+                notEmptyField(customerNameField) &&
+                notEmptyField(customerPhoneField)) {
 
             CustomerBusiness cb = new CustomerBusiness();
-
-            if (cb.customerIdentificationChecker(customerIdentificationField.getText()) &&
-                cb.customerNameChecker(customerNameField.getText()) &&
-                cb.customerPhoneChecker(customerPhoneField.getText())) {
+            if (
+                    cb.customerIdentificationChecker(customerIdentificationField.getText()) &&
+                    cb.customerNameChecker(customerNameField.getText()) &&
+                    cb.customerPhoneChecker(customerPhoneField.getText())) {
 
                 registerCustomer(customerIdentificationField, customerNameField, customerPhoneField);
                 clearFields();
-                JOptionPane.showMessageDialog(null,
-                        "Customer saved with success!");
-
+                JOptionPane.showMessageDialog(null, "Customer saved with success!");
             } else {
-
                 System.out.println("Failed to verify the customer.");
-
             }
-
         } else {
-
             JOptionPane.showMessageDialog(null,
                     "One or more required fields are empty.",
                     "Error",
                     JOptionPane.ERROR_MESSAGE);
-
         }
 
     }
