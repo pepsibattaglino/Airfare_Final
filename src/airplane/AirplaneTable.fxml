@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="airplane.AirplaneController">
+   <children>
+      <TableView fx:id="AirplaneTableView" layoutX="60.0" layoutY="54.0" prefHeight="260.0" prefWidth="520.0" AnchorPane.bottomAnchor="60.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0">
+        <columns>
+          <TableColumn fx:id="AirplaneKeyColumn" prefWidth="60.0" text="id" />
+          <TableColumn fx:id="AirplaneCodeColumn" prefWidth="150.0" text="code" />
+            <TableColumn fx:id="AirplaneModelColumn" prefWidth="250.0" text="model" />
+            <TableColumn fx:id="AirplaneQntSeatsColumn" minWidth="0.0" prefWidth="60.0" text="seats" />
+        </columns>
+      </TableView>
+      <Button fx:id="AirplaneRefreshButton" layoutX="444.0" layoutY="305.0" mnemonicParsing="false" text="Refresh" AnchorPane.bottomAnchor="20.0" AnchorPane.rightAnchor="20.0" />
+   </children>
+   <opaqueInsets>
+      <Insets />
+   </opaqueInsets>
+   <padding>
+      <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+   </padding>
+</AnchorPane>
