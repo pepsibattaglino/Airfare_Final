@@ -24,7 +24,7 @@ public class SaleDao {
      * @return
      */
     public boolean createSale(Sale sale) {
-        String sql = "INSERT INTO sale (salecustomer, saleflight, timeofpurechase) VALUES (?, ?, ?)";
+        String sql = "INSERT INTO sale (salecustomer, saleflight, timeofpurchase) VALUES (?, ?, ?)";
         PreparedStatement ppst = null;
 
         try {

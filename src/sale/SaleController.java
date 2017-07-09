@@ -1,5 +1,7 @@
 package sale;
 
+import flight.Flight;
+import flight.FlightDao;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -71,16 +73,19 @@ public class SaleController {
     }
 
     private void registerSale (TextField saleCustomer, TextField saleFlight) {
+        SaleDao sDao = new SaleDao();
+
 
         Sale s = new Sale(
                 Integer.parseInt(saleCustomer.getText()),
                 Integer.parseInt(saleFlight.getText()),
                 LocalDateTime.now());
 
-        SaleDao sDao = new SaleDao();
-
         sDao.createSale(s);
-
+        FlightDao fDao = new FlightDao();
+        Flight sFlight = fDao.locateFlightById(saleFlight.getText());
+        sFlight.setAvailableSeats(sFlight.getAvailableSeats()-1);
+        fDao.updateFlights(sFlight);
     }
 
     private void clearFields () {
