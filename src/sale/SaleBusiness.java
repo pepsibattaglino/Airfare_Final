@@ -20,17 +20,24 @@ public class SaleBusiness {
             return false;
         }*/
         try {
+
             Integer.parseInt(toCheck);
             System.out.println(toCheck + " validation passed.");
+
             return true;
+
         } catch (NumberFormatException e) {
+
             System.out.println(toCheck + " validation error.");
             JOptionPane.showMessageDialog(null,
                     saleCustomerMessage,
                     "Validation error",
                     JOptionPane.ERROR_MESSAGE);
+
             return false;
+
         }
+
     }
 
     public boolean saleFlightChecker (String toCheck) {
@@ -39,32 +46,46 @@ public class SaleBusiness {
         } else {
             return false;
         }*/
+
         try {
+
             Integer.parseInt(toCheck);
             System.out.println(toCheck + " validation passed.");
             return true;
+
         } catch (NumberFormatException e) {
+
             System.out.println(toCheck + " validation error.");
             JOptionPane.showMessageDialog(null,
                     saleFlightMessage,
                     "Validation error",
                     JOptionPane.ERROR_MESSAGE);
+
             return false;
+
         }
+
     }
 
     private boolean isValidStr (String toCheck, String rule, String errorMessage) {
+
         if (toCheck.matches(rule)) {
+
             System.out.println(toCheck + " validation passed.");
             return true;
+
         } else {
+
             System.out.println(toCheck + " validation error.");
             JOptionPane.showMessageDialog(null,
                     errorMessage,
                     "Validation error",
                     JOptionPane.ERROR_MESSAGE);
+
             return false;
+
         }
+
     }
 
 }
