@@ -1,5 +1,6 @@
 package flight;
 
+import airplane.AirplaneDao;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -26,13 +27,11 @@ public class FlightController {
     private TextField flightDestinationField;
 
     @FXML
-    private DatePicker flightDepartureField;
+    private TextField flightDepartureField;
 
     @FXML
     private TextField flightDesignatedAirplaneField;
 
-    @FXML
-    private TextField flightAvaliableSeatsField;
 
     /*@FXML
     private Button btnClear;
@@ -52,14 +51,13 @@ public class FlightController {
         if (
                 notEmptyField(flightOriginField) &&
                 notEmptyField(flightDestinationField) &&
-                //notEmptyField(flightDepartureField) &&
+                notEmptyField(flightDepartureField) &&
                 notEmptyField(flightDesignatedAirplaneField)) {
-
             FlightBusiness fb = new FlightBusiness();
             if (
                     fb.flightOriginChecker(flightOriginField.getText()) &&
                     fb.flightDestinationChecker(flightDestinationField.getText(), flightOriginField.getText()) &&
-                    fb.flightDepartureChecker(flightDepartureField.getPromptText()) &&
+                    fb.flightDepartureChecker(flightDepartureField.getText()) &&
                     fb.flightDesignatedAirplaneChecker(flightDesignatedAirplaneField.getText())) {
 
                 registerFlight(flightOriginField, flightDestinationField, flightDepartureField, flightDesignatedAirplaneField);
@@ -77,14 +75,15 @@ public class FlightController {
 
     }
 
-    private void registerFlight (TextField origin, TextField destination, DatePicker departure, TextField designatedAirplane) {
+    private void registerFlight (TextField origin, TextField destination, TextField departure, TextField designatedAirplane) {
         FlightBusiness fb = new FlightBusiness();
+
+
         Flight f = new Flight(
                 origin.getText(),
                 destination.getText(),
-                fb.timeParser(departure.getPromptText()),
+                fb.timeParser(departure.getText()),
                 Integer.parseInt(designatedAirplane.getText()));
-                //Integer.parseInt(availableSeats.getText()));
         FlightDao fDao = new FlightDao();
         fDao.createFlight(f);
     }
@@ -92,9 +91,8 @@ public class FlightController {
     private void clearFields () {
         flightOriginField.setText("");
         flightDestinationField.setText("");
-        flightDepartureField.setValue(null);
+        flightDepartureField.setText("");
         flightDesignatedAirplaneField.setText("");
-        flightAvaliableSeatsField.setText("");
     }
 
     private boolean notEmptyField (TextField toTest) {

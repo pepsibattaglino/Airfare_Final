@@ -1,5 +1,7 @@
 package flight;
 
+import airplane.AirplaneDao;
+
 import java.time.LocalDateTime;
 
 /**
@@ -16,11 +18,13 @@ public class Flight {
     public Flight() {}
 
     public Flight(String origin, String destination, LocalDateTime departure, int designatedPlane) {
+        AirplaneDao aDao = new AirplaneDao();
 
         this.origin = origin;
         this.destination = destination;
         this.departure = departure;
         this.designatedPlane = designatedPlane;
+        this.availableSeats = aDao.locateAirplaneById(Integer.toString(designatedPlane)).getQntSeats();
     }
 
     public Flight(int flightID, String origin, String destination, LocalDateTime departure, int designatedPlane, int availableSeats) {

@@ -8,17 +8,24 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane id="registerAirplanePane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sale.SaleController">
+<AnchorPane id="registerAirplanePane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="300.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sale.SaleController">
    <children>
-      <VBox fx:id="formSale" prefHeight="300.0" prefWidth="400.0" spacing="2.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <VBox fx:id="formSale" spacing="2.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Label text="Sale Customer:" />
+            <Label text="Make a sale">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <Region prefHeight="10.0" prefWidth="200.0" />
+            <Label text="Customer ID:" />
             <TextField fx:id="saleCustomerField" />
             <Region prefHeight="10.0" prefWidth="200.0" VBox.vgrow="ALWAYS" />
-            <Label layoutX="22.0" layoutY="22.0" text="Sale Flight" />
+            <Label layoutX="22.0" layoutY="22.0" text="Flight ID:" />
             <TextField fx:id="saleFlightField" layoutX="22.0" layoutY="45.0" />
-            <Region layoutX="22.0" layoutY="76.0" prefHeight="10.0" prefWidth="200.0" VBox.vgrow="ALWAYS" />
+            <Region prefHeight="10.0" prefWidth="200.0" VBox.vgrow="ALWAYS" />
             <HBox spacing="20.0">
                <children>
                   <Region HBox.hgrow="ALWAYS" />
@@ -36,7 +43,7 @@
             </HBox>
          </children>
          <padding>
-            <Insets bottom="50.0" left="50.0" right="50.0" top="50.0" />
+            <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
          </padding>
       </VBox>
    </children>
