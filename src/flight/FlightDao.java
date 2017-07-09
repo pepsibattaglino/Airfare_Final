@@ -13,9 +13,9 @@ public class FlightDao {
 
     private Connection con = null;
 
-    public FlightDao() {
+    /*public FlightDao() {
         con = DBConnector.getConnection();
-    }
+    }*/
 
     /**
      * CREATE
@@ -26,6 +26,7 @@ public class FlightDao {
      * @return
      */
     public boolean createFlight(Flight flight) {
+        con = DBConnector.getConnection();
         String sql = "INSERT INTO flight (origin, destination, departure, designatedplane, availableseats) VALUES (?, ?, ?, ?, ?)";
         PreparedStatement ppst = null;
 
@@ -55,6 +56,7 @@ public class FlightDao {
      * @return
      */
     public List<Flight> listAllFlights() {
+        con = DBConnector.getConnection();
         String sql = "SELECT * FROM flight";
         PreparedStatement ppst = null;
         ResultSet rset = null;
@@ -91,6 +93,7 @@ public class FlightDao {
      * @return
      */
     public boolean updateFlights(Flight flight) {
+        con = DBConnector.getConnection();
         String sql = "UPDATE flight SET origin = ?, destination = ?, departure = ?, designatedplane = ?, availableseats = ? WHERE flight_id = ?";
         PreparedStatement ppst = null;
 
@@ -122,6 +125,7 @@ public class FlightDao {
      * @return
      */
     public boolean deleteFlights(Flight flight) {
+        con = DBConnector.getConnection();
         String sql = "DELETE FROM flight WHERE flight_id = ?";
         PreparedStatement ppst = null;
 
@@ -139,6 +143,7 @@ public class FlightDao {
     }
 
     private Flight locateFlight(String parameter, String value) {
+        con = DBConnector.getConnection();
         String sql;
         PreparedStatement ppst = null;
         ResultSet rset = null;

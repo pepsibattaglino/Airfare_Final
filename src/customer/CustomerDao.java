@@ -11,9 +11,9 @@ public class CustomerDao {
 
     private Connection con = null;
 
-    public CustomerDao() {
+    /*public CustomerDao() {
         con = DBConnector.getConnection();
-    }
+    }*/
 
     /**
      * CREATE
@@ -24,6 +24,7 @@ public class CustomerDao {
      * @return
      */
     public boolean createCustomer(Customer customer) {
+        con = DBConnector.getConnection();
         String sql = "INSERT INTO customer (identification, customername, phone) VALUES (?, ?, ?)";
         PreparedStatement ppst = null;
 
@@ -50,6 +51,7 @@ public class CustomerDao {
      * @return
      */
     public List<Customer> listAllCustomers() {
+        con = DBConnector.getConnection();
         String sql = "SELECT * FROM customer";
         PreparedStatement ppst = null;
         ResultSet rset = null;
@@ -84,6 +86,7 @@ public class CustomerDao {
      * @return
      */
     public boolean updateCustomer(Customer customer) {
+        con = DBConnector.getConnection();
         String sql = "UPDATE customer SET identification = ?, customername = ?, phone = ? WHERE customer_id = ?";
         PreparedStatement ppst = null;
 
@@ -112,6 +115,7 @@ public class CustomerDao {
      * @return
      */
     public boolean deleteCustomer(Customer customer) {
+        con = DBConnector.getConnection();
         String sql = "DELETE FROM customer WHERE customer_id = ?";
         PreparedStatement ppst = null;
 
@@ -129,6 +133,7 @@ public class CustomerDao {
     }
 
     private Customer locateCustomer(String parameter, String value) {
+        con = DBConnector.getConnection();
         String sql;
         PreparedStatement ppst = null;
         ResultSet rset = null;
