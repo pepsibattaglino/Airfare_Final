@@ -1,5 +1,7 @@
 package flight;
 
+import _application.Business;
+
 import javax.swing.*;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -7,92 +9,54 @@ import java.time.format.DateTimeFormatter;
 /**
  * Created by G.Battaglino on 08/07/2017.
  */
-public class FlightBusiness {
+public class FlightBusiness extends Business {
 
-    private String flightOriginValidator = "^[\\p{IsLatin}\\p{Digit}]{2,}([ ]{1}[\\p{IsLatin}\\p{Digit}]++)*$";
-    private String flightOriginMessage = "Invalid identification, use only letters and numbers.";
-
-    private String flightDestinationValidator = "^[\\p{IsLatin}]{2,}([ ]{1}[\\p{IsLatin}]++)*$";
-    private String flightDestinationMessage = "Invalid name, use only letters.";
-
-    private static DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
-    private String flightDepartureMessage = "Invalid identification, use only letters and numbers.";
-
-    private String flightDesignatedAirplaneValidator = "^[\\p{IsLatin}]{2,}([ ]{1}[\\p{IsLatin}]++)*$";
-    private String flightDesignatedAirplaneMessage = "Invalid name, use only letters.";
-
-//    private String flightAvailableSeatsValidator = "^[\\p{IsLatin}]{2,}([ ]{1}[\\p{IsLatin}]++)*$";
-    private String flightAvailableSeatsMessage = "Invalid number of seats.";
-
-    public static DateTimeFormatter timeFormatter() {
-        return timeFormatter;
-    }
+    /**
+     * Flight origin validation
+     */
+    private String flightOriginValidator = "^[\\p{IsLatin}]{2,}([ ]{1}[\\p{IsLatin}]++)*$";
+    private String flightOriginMessage = "Invalid origin, use only letters.";
 
     public boolean flightOriginChecker (String toCheck) {
-        if(isValidStr(toCheck, flightOriginValidator, flightOriginMessage)){
-            return true;
-        } else {
+        return isValidStr(toCheck, flightOriginValidator, flightOriginMessage);
+    }
+
+    /**
+     * Flight destination validation
+     */
+    private String flightDestinationValidator = "^[\\p{IsLatin}]{2,}([ ]{1}[\\p{IsLatin}]++)*$";
+    private String flightDestinationMessage1 = "Invalid destination, use only letters.";
+    private String flightDestinationMessage2 = "The destination must be different from the origin.";
+
+    public boolean flightDestinationChecker (String toCheck, String origin) {
+        if (toCheck.equalsIgnoreCase(origin)) {
+            validationError(toCheck, flightDestinationMessage2);
             return false;
+        } else {
+            return isValidStr(toCheck, flightDestinationValidator, flightDestinationMessage1);
         }
     }
 
-    public boolean flightDestinationChecker (String toCheck) {
-        if(isValidStr(toCheck, flightDestinationValidator, flightDestinationMessage)){
-            return true;
-        } else {
-            return false;
-        }
-    }
+    /**
+     * Flight departure validation
+     */
+    private static DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+    private String flightDepartureMessage = "Invalid departure, please use the following format: 'YYYY-MM-DD hh:mm'.";
 
     public boolean flightDepartureChecker (String toCheck) {
-        try {
-            LocalDateTime dateTime = LocalDateTime.parse(toCheck, timeFormatter);
-            System.out.println(toCheck + " validation passed.");
-            return true;
-        } catch (NumberFormatException e) {
-            System.out.println(toCheck + " validation error.");
-            JOptionPane.showMessageDialog(null,
-                    flightAvailableSeatsMessage,
-                    "Validation error",
-                    JOptionPane.ERROR_MESSAGE);
-            return false;
-        }
+        return isValidDat(toCheck, flightDepartureMessage, timeFormatter);
     }
+    public LocalDateTime timeParser(String toParse) {
+        return LocalDateTime.parse(toParse, timeFormatter);
+    }
+
+    /**
+     * Flight designated airplane validation
+     */
+    private String flightDesignatedAirplaneMessage = "Invalid airplane ID, it must be a number.";
 
     public boolean flightDesignatedAirplaneChecker (String toCheck) {
-        if (isValidStr(toCheck, flightDesignatedAirplaneValidator, flightDesignatedAirplaneMessage)){
-            return true;
-        }else{
-            return false;
-        }
+        return isValidInt(toCheck, flightDesignatedAirplaneMessage);
     }
 
-    public boolean flightAvailableSeatsChecker (String toCheck) {
-        try {
-            Integer.parseInt(toCheck);
-            System.out.println(toCheck + " validation passed.");
-            return true;
-        } catch (NumberFormatException e) {
-            System.out.println(toCheck + " validation error.");
-            JOptionPane.showMessageDialog(null,
-                    flightAvailableSeatsMessage,
-                    "Validation error",
-                    JOptionPane.ERROR_MESSAGE);
-            return false;
-        }
-    }
-
-    private boolean isValidStr (String toCheck, String rule, String errorMessage) {
-        if (toCheck.matches(rule)) {
-            System.out.println(toCheck + " validation passed.");
-            return true;
-        } else {
-            System.out.println(toCheck + " validation error.");
-            JOptionPane.showMessageDialog(null,
-                    errorMessage,
-                    "Validation error",
-                    JOptionPane.ERROR_MESSAGE);
-            return false;
-        }
-    }
 }

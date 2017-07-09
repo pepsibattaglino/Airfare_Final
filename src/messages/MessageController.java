@@ -5,13 +5,13 @@ import javax.swing.*;
 /**
  * Created by Bernardo on 08/07/2017.
  */
-public class MessageController {
+public class MessageController{
 
     /**
      * Error MessageController
      * Generates error message pop-ups.
      */
-    public void eMes (String title, String message) {
+    public static void eMes(String title, String message) {
         JOptionPane.showMessageDialog(null,
                 message,
                 title,
