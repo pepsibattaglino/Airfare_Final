@@ -13,9 +13,9 @@ public class AirplaneDao {
 
     private Connection con = null;
 
-    public AirplaneDao() {
+    /*public AirplaneDao() {
         con = DBConnector.getConnection();
-    }
+    }*/
 
     /**
      * CREATE
@@ -25,6 +25,7 @@ public class AirplaneDao {
      * @return success
      */
     public boolean createAirplane(Airplane airplane) {
+        con = DBConnector.getConnection();
         String sql = "INSERT INTO airplane (code, model, qntSeats) VALUES (?, ?, ?)";
         PreparedStatement ppst = null;
 
@@ -50,6 +51,7 @@ public class AirplaneDao {
      * @return
      */
     public List<Airplane> listAllAirplanes() {
+        con = DBConnector.getConnection();
         String sql = "SELECT * FROM airplane";
         PreparedStatement ppst = null;
         ResultSet rset = null;
@@ -82,6 +84,7 @@ public class AirplaneDao {
      * @return
      */
     public boolean updateAirplane(Airplane airplane) {
+        con = DBConnector.getConnection();
         String sql = "UPDATE airplane SET code = ?, model = ?, qntSeats = ? WHERE airplane_id = ?";
         PreparedStatement ppst = null;
 
@@ -108,6 +111,7 @@ public class AirplaneDao {
      * @return
      */
     public boolean deleteAirplane(Airplane airplane) {
+        con = DBConnector.getConnection();
         String sql = "DELETE FROM airplane WHERE airplane_id = ?";
         PreparedStatement ppst = null;
 
@@ -124,29 +128,8 @@ public class AirplaneDao {
         }
     }
 
-//    public Airplane findAirplaneById(int id) {
-//        String sql = "SELECT * FROM airplane WHERE airplane_id = ?";
-//        PreparedStatement ppst = null;
-//        ResultSet rset = null;
-//        Airplane airplane = new Airplane();
-//        try {
-//            ppst = con.prepareStatement(sql);
-//            ppst.setInt(1, id);
-//            rset = ppst.executeQuery();
-//            rset.next();
-//            airplane.setAirplaneID(rset.getInt("airplane_id"));
-//            airplane.setCode(rset.getString("code"));
-//            airplane.setModel(rset.getString("model"));
-//            airplane.setQntSeats(rset.getInt("qntseats"));
-//        } catch (SQLException e) {
-//            System.err.println("Error: " + e);
-//        } finally {
-//            DBConnector.closeConnection(con, ppst);
-//        }
-//        return airplane;
-//    }
-
     private Airplane locateAirplane(String parameter, String value) {
+        con = DBConnector.getConnection();
         String sql;
         PreparedStatement ppst = null;
         ResultSet rset = null;

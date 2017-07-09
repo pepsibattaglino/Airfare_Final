@@ -11,9 +11,9 @@ public class SaleDao {
 
     private Connection con = null;
 
-    public SaleDao() {
+    /*public SaleDao() {
         con = DBConnector.getConnection();
-    }
+    }*/
 
     /**
      * CREATE
@@ -24,6 +24,7 @@ public class SaleDao {
      * @return
      */
     public boolean createSale(Sale sale) {
+        con = DBConnector.getConnection();
         String sql = "INSERT INTO sale (salecustomer, saleflight, timeofpurchase) VALUES (?, ?, ?)";
         PreparedStatement ppst = null;
 
@@ -32,7 +33,7 @@ public class SaleDao {
             ppst.setInt(1, sale.getSaleCustomer());
             ppst.setInt(2, sale.getSaleFlight());
             Timestamp date = Timestamp.valueOf(sale.getTimeOfPurchase());
-            ppst.setTimestamp(3, date);//?????
+            ppst.setTimestamp(3, date);
             ppst.executeUpdate();
             return true;
         } catch (SQLException e) {
@@ -51,6 +52,7 @@ public class SaleDao {
      * @return
      */
     public List<Sale> listAllSales() {
+        con = DBConnector.getConnection();
         String sql = "SELECT * FROM sale";
         PreparedStatement ppst = null;
         ResultSet rset = null;
@@ -85,6 +87,7 @@ public class SaleDao {
      * @return
      */
     public boolean updateSale(Sale sale) {
+        con = DBConnector.getConnection();
         String sql = "UPDATE sale SET salecustomer = ?, saleflight = ?, timeofpurchase = ? WHERE sale_id = ?";
         PreparedStatement ppst = null;
 
@@ -114,6 +117,7 @@ public class SaleDao {
      * @return
      */
     public boolean deleteSale(Sale sale) {
+        con = DBConnector.getConnection();
         String sql = "DELETE FROM sale WHERE sale_id = ?";
         PreparedStatement ppst = null;
 
@@ -131,6 +135,7 @@ public class SaleDao {
     }
 
     private Sale locateSale(String parameter, String value) {
+        con = DBConnector.getConnection();
         String sql;
         PreparedStatement ppst = null;
         ResultSet rset = null;
