@@ -9,8 +9,6 @@ public class Customer {
     private String customerName;
     private String phone;
 
-    public Customer() {}
-
     public Customer(String identification, String customerName, String phone) {
         this.identification = identification;
         this.customerName = customerName;
@@ -22,6 +20,10 @@ public class Customer {
         this.identification = identification;
         this.customerName = customerName;
         this.phone = phone;
+    }
+
+    public Customer() {
+
     }
 
     public int getCustomerID() {
