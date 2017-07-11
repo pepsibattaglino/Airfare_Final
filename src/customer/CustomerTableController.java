@@ -70,13 +70,6 @@ public class CustomerTableController implements Initializable {
     @FXML
     private Button btnFormClear;
 
-
-
-
-
-
-
-
     @FXML
     void treatBtnFormClear(ActionEvent event) {
         System.out.println("The Clear button has been pressed.");
@@ -131,23 +124,19 @@ public class CustomerTableController implements Initializable {
         }
     }
 
-
-
-
-
-
-
     private List<Customer> listCustomers;
     private ObservableList<Customer> observableListCustomers;
+    private CustomerTableDao cTDao = new CustomerTableDao();
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        listCustomers = new ArrayList<>();
-
-        listCustomers.add(new Customer("111222", "Fulano Fulani", "1111-2222"));
-        listCustomers.add(new Customer("333444", "Giuseppe Battaglino", "3333-4444"));
-        listCustomers.add(new Customer("555666", "Bernardo Araujo", "5555-6666"));
-        loadTableViewCustomers();
+        try {
+            listCustomers = new ArrayList<>();
+            listCustomers = cTDao.listAllCustomers();
+            loadTableViewCustomers();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     private void loadTableViewCustomers() {

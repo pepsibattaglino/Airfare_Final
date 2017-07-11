@@ -5,6 +5,7 @@ import java.util.*;
 
 import connection.DBConnector;
 
+
 /**
  * Created by G.Battaglino on 09/07/2017.
  */
@@ -36,7 +37,7 @@ public class CustomerTableDao {
     }
 
     public List<Customer> listAllCustomers() {
-        String sql = "SELECT * FROM customerTable";
+        String sql = "SELECT * FROM customertable";
         PreparedStatement ppst = null;
         ResultSet rset = null;
         List<Customer> customers = new ArrayList<>();
