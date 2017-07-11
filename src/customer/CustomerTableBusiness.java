@@ -36,4 +36,5 @@ public class CustomerTableBusiness extends Business {
     public boolean customerPhoneChecker (String toCheck) {
         return isValidStr(toCheck, customerPhoneValidator, customerPhoneMessage);
     }
+
 }
