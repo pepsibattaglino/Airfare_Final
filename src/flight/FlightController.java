@@ -3,14 +3,24 @@ package flight;
 /**
  * Created by Bernardo on 13/07/2017.
  */
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 
-public class FlightController {
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.ResourceBundle;
+
+public class FlightController implements Initializable {
 
     @FXML
     private TextField flightManRegTfOrigin;
@@ -76,27 +86,60 @@ public class FlightController {
     private Button flightManDelBtnDelete;
 
     @FXML
-    private TableView<?> flightTab;
+    private TableView<Flight> flightTab;
 
     @FXML
-    private TableColumn<?, ?> flightTabClnID;
+    private TableColumn<Flight, String> flightTabClnID;
 
     @FXML
-    private TableColumn<?, ?> flightTabClnOrigin;
+    private TableColumn<Flight, String> flightTabClnOrigin;
 
     @FXML
-    private TableColumn<?, ?> flightTabClnDestination;
+    private TableColumn<Flight, String> flightTabClnDestination;
 
     @FXML
-    private TableColumn<?, ?> flightTabClnDepartureTime;
+    private TableColumn<Flight, String> flightTabClnDepartureTime;
 
     @FXML
-    private TableColumn<?, ?> flightTabClnDesignatedAirplane;
+    private TableColumn<Flight, String> flightTabClnDesignatedAirplane;
 
     @FXML
-    private TableColumn<?, ?> flightTabClnAvailableSeats;
+    private TableColumn<Flight, String> flightTabClnAvailableSeats;
 
     @FXML
     private Button flightTabBtnRefresh;
+
+    private List<Flight> listFlighs;
+    private ObservableList<Flight> observableListFlights;
+    private FlightDao fDao = new FlightDao();
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        try {
+            listFlighs = new ArrayList<>();
+            listFlighs = fDao.listAllFlights();
+            loadTableViewFlights();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void loadTableViewFlights() {
+        flightTabClnID.setCellValueFactory(new PropertyValueFactory<>("flightID"));
+        flightTabClnOrigin.setCellValueFactory(new PropertyValueFactory<>("origin"));
+        flightTabClnDestination.setCellValueFactory(new PropertyValueFactory<>("destination"));
+        flightTabClnDepartureTime.setCellValueFactory(new PropertyValueFactory<>("departure"));
+        flightTabClnDesignatedAirplane.setCellValueFactory(new PropertyValueFactory<>("designatedPlane"));
+        flightTabClnAvailableSeats.setCellValueFactory(new PropertyValueFactory<>("availableSeats"));
+
+        observableListFlights = FXCollections.observableArrayList(listFlighs);
+        flightTab.setItems(observableListFlights);
+    }
+
+    @FXML
+    void treatTabBtnRefresh(ActionEvent event) {
+        System.out.println("The Refresh button has been pressed.");
+        flightTab.refresh();
+    }
 
 }
