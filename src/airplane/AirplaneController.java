@@ -3,17 +3,26 @@ package airplane;
 /**
  * Created by Bernardo on 13/07/2017.
  */
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
+
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.ResourceBundle;
 
 import static messages.MessageController.eMes;
 
-public class AirplaneController{
+public class AirplaneController implements Initializable{
 
     @FXML
     private TextField airplaneManRegTfCode;
@@ -70,19 +79,19 @@ public class AirplaneController{
     private Button airplaneManDelBtnDel;
 
     @FXML
-    private TableView<?> airplaneTab;
+    private TableView<Airplane> airplaneTab;
 
     @FXML
-    private TableColumn<?, ?> airplaneTabClnId;
+    private TableColumn<Airplane, String> airplaneTabClnId;
 
     @FXML
-    private TableColumn<?, ?> airplaneTabClnCode;
+    private TableColumn<Airplane, String> airplaneTabClnCode;
 
     @FXML
-    private TableColumn<?, ?> airplaneTabClnModel;
+    private TableColumn<Airplane, String> airplaneTabClnModel;
 
     @FXML
-    private TableColumn<?, ?> airplaneTabClnQntSeats;
+    private TableColumn<Airplane, String> airplaneTabClnQntSeats;
 
     @FXML
     private Button airplaneTabBtnRefresh;
@@ -98,7 +107,7 @@ public class AirplaneController{
     private TextField deleteSurvey = airplaneManDelTfId;
     private Label[] deleteLabels = new Label[]{airplaneManDelLabCode, airplaneManDelLabModel, airplaneManDelLabQntSeats};
 
-    private void refresh(){
+    private void refreshBernardo(){
         registerFields = new TextField[]{airplaneManRegTfCode, airplaneManRegTfModel, airplaneManRegTfQntSeat};
         editFields = new TextField[]{airplaneManEditTfCode, airplaneManEditTfModel, airplaneManEditTfQntSeats};
         editSurvey = airplaneManEditTfId;
@@ -234,7 +243,7 @@ public class AirplaneController{
      */
 
     public void btnActionSaveRegister(ActionEvent event) {
-        refresh();
+        refreshBernardo();
         if(allFieldsFilled(registerFields)) {           // Check for empty fields
             if (allRulesComplied(registerFields)) {     // Check for rule compliance
                 if (!existsOnDbArray(registerFields)) { // Check for repetition on DB
@@ -250,7 +259,7 @@ public class AirplaneController{
     }
 
     public void btnClearFieldsRegister(ActionEvent event) {
-        refresh();
+        refreshBernardo();
         clearFields(registerFields);
     }
 
@@ -259,7 +268,7 @@ public class AirplaneController{
      */
 
     public void btnActionSurveyEdit(ActionEvent event) {
-        refresh();
+        refreshBernardo();
 
         if (allFieldsFilled(toAry(editSurvey))) {
             if (existsOnDb(editSurvey)) {
@@ -273,7 +282,7 @@ public class AirplaneController{
     }
 
     public void btnActionSaveEdit(ActionEvent event) {
-        refresh();
+        refreshBernardo();
         if(allFieldsFilled(editFields)) {           // Check for empty fields
             if (allRulesComplied(editFields)) {     // Check for rule compliance
                 editObject(editFields);
@@ -286,7 +295,7 @@ public class AirplaneController{
     }
 
     public void btnClearFieldsEdit(ActionEvent event) {
-        refresh();
+        refreshBernardo();
         clearFields(editFields);
         clearField(editSurvey);
     }
@@ -296,7 +305,7 @@ public class AirplaneController{
      */
 
     public void btnActionSurveyDelete(ActionEvent event) {
-        refresh();
+        refreshBernardo();
         if (allFieldsFilled(toAry(deleteSurvey))) {
             if (existsOnDb(deleteSurvey)) {
                 fillLabels(findById(deleteSurvey.getText()));
@@ -309,10 +318,47 @@ public class AirplaneController{
     }
 
     public void btnActionDelete(ActionEvent event) {
-        refresh();
+        refreshBernardo();
         delete(findById(deleteSurvey.getText()));
         clearField(deleteSurvey);
         clearLabels();
     }
+
+
+
+
+
+
+    private List<Airplane> listAirplanes;
+    private ObservableList<Airplane> observableListAirplanes;
+    private AirplaneDao aDao = new AirplaneDao();
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        try {
+            listAirplanes = new ArrayList<>();
+            listAirplanes = aDao.listAllAirplanes();
+            loadTableViewAirplanes();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void loadTableViewAirplanes() {
+        airplaneTabClnId.setCellValueFactory(new PropertyValueFactory<>("airplaneID"));
+        airplaneTabClnCode.setCellValueFactory(new PropertyValueFactory<>("code"));
+        airplaneTabClnModel.setCellValueFactory(new PropertyValueFactory<>("model"));
+        airplaneTabClnQntSeats.setCellValueFactory(new PropertyValueFactory<>("qntSeats"));
+
+        observableListAirplanes = FXCollections.observableArrayList(listAirplanes);
+        airplaneTab.setItems(observableListAirplanes);
+    }
+
+    @FXML
+    void treatTabBtnRefresh(ActionEvent event) {
+        System.out.println("The Refresh button has been pressed.");
+        airplaneTab.refresh();
+    }
+
 
 }
