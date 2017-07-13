@@ -24,22 +24,27 @@ public class CustomerDao {
      * @return
      */
     public boolean createCustomer(Customer customer) {
-        con = DBConnector.getConnection();
-        String sql = "INSERT INTO customer (identification, customername, phone) VALUES (?, ?, ?)";
-        PreparedStatement ppst = null;
+        if (!isNotEmpty(locateCustomerByIdentification(customer.getIdentification()))) {
+            con = DBConnector.getConnection();
+            String sql = "INSERT INTO customer (identification, customername, phone) VALUES (?, ?, ?)";
+            PreparedStatement ppst = null;
 
-        try {
-            ppst = con.prepareStatement(sql);
-            ppst.setString(1, customer.getIdentification());
-            ppst.setString(2, customer.getCustomerName());
-            ppst.setString(3, customer.getPhone());
-            ppst.executeUpdate();
-            return true;
-        } catch (SQLException e) {
-            System.err.println("Error: " + e);
+            try {
+                ppst = con.prepareStatement(sql);
+                ppst.setString(1, customer.getIdentification());
+                ppst.setString(2, customer.getCustomerName());
+                ppst.setString(3, customer.getPhone());
+                ppst.executeUpdate();
+                return true;
+            } catch (SQLException e) {
+                System.err.println("Error: " + e);
+                return false;
+            } finally {
+                DBConnector.closeConnection(con, ppst);
+            }
+        } else {
+            System.out.println("Error. Repeated customer identification number.");
             return false;
-        } finally {
-            DBConnector.closeConnection(con, ppst);
         }
     }
 
@@ -184,7 +189,7 @@ public class CustomerDao {
         return customer;
     }
 
-    public Customer locateCustomerByidentification(String value) {
+    public Customer locateCustomerByIdentification(String value) {
         Customer customer = locateCustomer("identification", value);
         return customer;
     }
