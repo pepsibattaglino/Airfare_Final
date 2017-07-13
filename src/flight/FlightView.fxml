@@ -54,8 +54,8 @@
                                                 <Region prefHeight="200.0" prefWidth="200.0" />
                                                 <HBox alignment="TOP_RIGHT" spacing="10.0" VBox.vgrow="ALWAYS">
                                                    <children>
-                                                      <Button fx:id="flightManRegBtnClear" mnemonicParsing="false" text="Clear" />
-                                                      <Button fx:id="flightManRegBtnSave" mnemonicParsing="false" text="Save" />
+                                                      <Button fx:id="flightManRegBtnClear" mnemonicParsing="false" onAction="#btnClearFieldsRegister" text="Clear" />
+                                                      <Button fx:id="flightManRegBtnSave" mnemonicParsing="false" onAction="#btnActionSaveRegister" text="Save" />
                                                    </children>
                                                    <padding>
                                                       <Insets top="10.0" />
@@ -77,7 +77,7 @@
                                                 <HBox spacing="10.0">
                                                    <children>
                                                       <TextField fx:id="flightManEditTfId" HBox.hgrow="ALWAYS" />
-                                                      <Button fx:id="flightManEditBtnSurvey" mnemonicParsing="false" text="Survey" />
+                                                      <Button fx:id="flightManEditBtnSurvey" mnemonicParsing="false" onAction="#btnActionSurveyEdit" text="Survey" />
                                                    </children>
                                                 </HBox>
                                                 <Region prefHeight="200.0" prefWidth="200.0" />
@@ -93,8 +93,8 @@
                                                       <TextField fx:id="flightManEditTfDesignatedPlane" />
                                                       <HBox alignment="TOP_RIGHT" spacing="10.0" VBox.vgrow="ALWAYS">
                                                          <children>
-                                                            <Button fx:id="flightManEditBtnClear" mnemonicParsing="false" text="Clear" />
-                                                            <Button fx:id="flightManEditBtnSave" mnemonicParsing="false" text="Save" />
+                                                            <Button fx:id="flightManEditBtnClear" mnemonicParsing="false" onAction="#btnClearFieldsEdit" text="Clear" />
+                                                            <Button fx:id="flightManEditBtnSave" mnemonicParsing="false" onAction="#btnActionSaveEdit" text="Save" />
                                                          </children>
                                                          <padding>
                                                             <Insets top="10.0" />
@@ -118,12 +118,12 @@
                                                 <HBox spacing="10.0">
                                                    <children>
                                                       <TextField fx:id="flightManDelTfId" HBox.hgrow="ALWAYS" />
-                                                      <Button fx:id="flightManDelBtnSurvey" mnemonicParsing="false" text="Survey" />
+                                                      <Button fx:id="flightManDelBtnSurvey" mnemonicParsing="false" onAction="#btnActionSurveyDelete" text="Survey" />
                                                    </children>
                                                 </HBox>
                                                 <Region prefHeight="200.0" prefWidth="200.0" />
                                                 <Label text="Origin:" />
-                                                <Label fx:id="flightManDelLabOrigin" text="Label">
+                                                <Label fx:id="flightManDelLabOrigin">
                                                    <font>
                                                       <Font name="System Bold" size="12.0" />
                                                    </font>
@@ -132,7 +132,7 @@
                                                    </VBox.margin>
                                                 </Label>
                                                 <Label text="Destination:" />
-                                                <Label fx:id="flightManDelLabDestination" text="Label">
+                                                <Label fx:id="flightManDelLabDestination">
                                                    <font>
                                                       <Font name="System Bold" size="12.0" />
                                                    </font>
@@ -141,7 +141,7 @@
                                                    </VBox.margin>
                                                 </Label>
                                                 <Label text="Departure time:" />
-                                                <Label fx:id="flightManDelLabDepartureTime" text="Label">
+                                                <Label fx:id="flightManDelLabDepartureTime">
                                                    <font>
                                                       <Font name="System Bold" size="12.0" />
                                                    </font>
@@ -150,7 +150,7 @@
                                                    </VBox.margin>
                                                 </Label>
                                                 <Label text="Designated airplane:" />
-                                                <Label fx:id="flightManDelLabDesignatedAirplane" text="Label">
+                                                <Label fx:id="flightManDelLabDesignatedAirplane">
                                                    <font>
                                                       <Font name="System Bold" size="12.0" />
                                                    </font>
@@ -160,7 +160,7 @@
                                                 </Label>
                                                 <HBox alignment="TOP_RIGHT" spacing="10.0" VBox.vgrow="ALWAYS">
                                                    <children>
-                                                      <Button fx:id="flightManDelBtnDelete" mnemonicParsing="false" text="Delete" />
+                                                      <Button fx:id="flightManDelBtnDelete" mnemonicParsing="false" onAction="#btnActionDelete" text="Delete" />
                                                    </children>
                                                    <padding>
                                                       <Insets top="10.0" />
