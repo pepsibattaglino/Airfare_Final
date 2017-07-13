@@ -52,10 +52,13 @@ public class CustomerController {
                 cb.customerNameChecker(customerNameField.getText()) &&
                 cb.customerPhoneChecker(customerPhoneField.getText())) {
 
-                registerCustomer(customerIdentificationField, customerNameField, customerPhoneField);
-                clearFields();
-                JOptionPane.showMessageDialog(null,
-                        "Customer saved with success!");
+                if (registerCustomer(customerIdentificationField, customerNameField, customerPhoneField)) {
+                    clearFields();
+                    JOptionPane.showMessageDialog(null,
+                            "Customer saved with success!");
+                } else {
+                    System.out.println("Failed to register the customer.");
+                }
 
             } else {
 
@@ -74,13 +77,19 @@ public class CustomerController {
 
     }
 
-    private void registerCustomer (TextField identification, TextField name, TextField phone) {
-        Customer c = new Customer(
-                identification.getText(),
-                name.getText(),
-                phone.getText());
-        CustomerDao cDao = new CustomerDao();
-        cDao.createCustomer(c);
+    private boolean registerCustomer (TextField identification, TextField name, TextField phone) {
+        try {
+            Customer c = new Customer(
+                    identification.getText(),
+                    name.getText(),
+                    phone.getText());
+            CustomerDao cDao = new CustomerDao();
+            cDao.createCustomer(c);
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 
     private void clearFields () {

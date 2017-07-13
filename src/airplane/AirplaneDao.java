@@ -25,22 +25,26 @@ public class AirplaneDao {
      * @return success
      */
     public boolean createAirplane(Airplane airplane) {
-        con = DBConnector.getConnection();
-        String sql = "INSERT INTO airplane (code, model, qntSeats) VALUES (?, ?, ?)";
-        PreparedStatement ppst = null;
+        if (!isNotEmpty(locateAirplaneByCode(airplane.getCode()))) {
+            con = DBConnector.getConnection();
+            String sql = "INSERT INTO airplane (code, model, qntSeats) VALUES (?, ?, ?)";
+            PreparedStatement ppst = null;
 
-        try {
-            ppst = con.prepareStatement(sql);
-            ppst.setString(1, airplane.getCode());
-            ppst.setString(2, airplane.getModel());
-            ppst.setInt(3, airplane.getQntSeats());
-            ppst.executeUpdate();
-            return true;
-        } catch (SQLException e) {
-            System.err.println("Error: " + e);
+            try {
+                ppst = con.prepareStatement(sql);
+                ppst.setString(1, airplane.getCode());
+                ppst.setString(2, airplane.getModel());
+                ppst.setInt(3, airplane.getQntSeats());
+                ppst.executeUpdate();
+                return true;
+            } catch (SQLException e) {
+                System.err.println("Error: " + e);
+                return false;
+            } finally {
+                DBConnector.closeConnection(con, ppst);
+            }
+        } else {
             return false;
-        } finally {
-            DBConnector.closeConnection(con, ppst);
         }
     }
 
