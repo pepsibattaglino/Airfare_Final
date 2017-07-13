@@ -25,7 +25,7 @@ public class AirplaneMain extends Application{
 
 //    @Override
 //    public void start(Stage primaryStage) throws Exception {
-//        Parent root = FXMLLoader.load(getClass().getResource("AirplaneView.fxml"));
+//        Parent root = FXMLLoader.load(getClass().getResource("AirplaneViewOlder.fxml"));
 //        Scene scene = new Scene(root);
 //        primaryStage.setTitle("Register Airplane");
 //        primaryStage.setScene(scene);

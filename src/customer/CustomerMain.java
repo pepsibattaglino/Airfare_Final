@@ -17,7 +17,7 @@ public class CustomerMain extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("CustomerView.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("CustomerViewOlder.fxml"));
         Scene scene = new Scene(root);
         primaryStage.setTitle("Register Customer");
         primaryStage.setScene(scene);
