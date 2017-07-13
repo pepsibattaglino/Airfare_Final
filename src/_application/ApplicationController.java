@@ -3,7 +3,6 @@ package _application;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.layout.Pane;
 
@@ -40,7 +39,7 @@ public class ApplicationController {
 
     @FXML
     private void callSales(ActionEvent event) throws IOException {
-        Pane pane = FXMLLoader.load(getClass().getResource("/sale/SaleView.fxml"));
+        Pane pane = FXMLLoader.load(getClass().getResource("/sale/SaleViewOlder.fxml"));
         paneForLoad.getChildren().setAll(pane);
     }
 
