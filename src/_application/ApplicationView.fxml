@@ -30,7 +30,7 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button fx:id="btnSales" contentDisplay="TOP" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="200.0" prefWidth="150.0" text="Sales">
+                  <Button fx:id="btnSales" contentDisplay="TOP" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#callSales" prefHeight="200.0" prefWidth="150.0" text="Sales">
                      <graphic>
                         <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
                            <image>

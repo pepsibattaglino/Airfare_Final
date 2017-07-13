@@ -39,7 +39,7 @@ public class ApplicationController {
 
     @FXML
     private void callSales(ActionEvent event) throws IOException {
-        Pane pane = FXMLLoader.load(getClass().getResource("/sale/SaleViewOlder.fxml"));
+        Pane pane = FXMLLoader.load(getClass().getResource("/sale/SaleView.fxml"));
         paneForLoad.getChildren().setAll(pane);
     }
 

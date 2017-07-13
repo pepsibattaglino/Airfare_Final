@@ -17,7 +17,7 @@ public class SaleMain extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("SaleView.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("SaleViewOlder.fxml"));
         Scene scene = new Scene(root);
         primaryStage.setTitle("Register Sale");
         primaryStage.setScene(scene);
