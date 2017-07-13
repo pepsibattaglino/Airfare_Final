@@ -1,106 +1,102 @@
 package flight;
 
-import airplane.AirplaneDao;
-import javafx.event.ActionEvent;
+/**
+ * Created by Bernardo on 13/07/2017.
+ */
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.VBox;
 
-import javax.swing.*;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-
-/**
- * Created by G.Battaglino on 08/07/2017.
- */
 public class FlightController {
 
-   /* @FXML
-    private VBox formFlight;*/
+    @FXML
+    private TextField flightManRegTfOrigin;
 
     @FXML
-    private TextField flightOriginField;
+    private TextField flightManRegTfDestination;
 
     @FXML
-    private TextField flightDestinationField;
+    private TextField flightManRegTfDepartureTime;
 
     @FXML
-    private TextField flightDepartureField;
+    private TextField flightManRegTfDesignatedPlaneId;
 
     @FXML
-    private TextField flightDesignatedAirplaneField;
-
-
-    /*@FXML
-    private Button btnClear;
+    private Button flightManRegBtnClear;
 
     @FXML
-    private Button btnSave;*/
+    private Button flightManRegBtnSave;
 
     @FXML
-    void treatClearButton(ActionEvent event) {
-        System.out.println("The Clear button has been pressed.");
-        clearFields();
-    }
+    private TextField flightManEditTfId;
 
     @FXML
-    void treatSaveButton(ActionEvent event) {
-        System.out.println("The Save button has been pressed.");
-        if (
-                notEmptyField(flightOriginField) &&
-                notEmptyField(flightDestinationField) &&
-                notEmptyField(flightDepartureField) &&
-                notEmptyField(flightDesignatedAirplaneField)) {
-            FlightBusiness fb = new FlightBusiness();
-            if (
-                    fb.flightOriginChecker(flightOriginField.getText()) &&
-                    fb.flightDestinationChecker(flightDestinationField.getText(), flightOriginField.getText()) &&
-                    fb.flightDepartureChecker(flightDepartureField.getText()) &&
-                    fb.flightDesignatedAirplaneChecker(flightDesignatedAirplaneField.getText())) {
+    private Button flightManEditBtnSurvey;
 
-                registerFlight(flightOriginField, flightDestinationField, flightDepartureField, flightDesignatedAirplaneField);
-                clearFields();
-                JOptionPane.showMessageDialog(null, "Flight saved with success!");
-            } else {
-                System.out.println("Failed to verify the flight.");
-            }
-        } else {
-            JOptionPane.showMessageDialog(null,
-                    "One or more required fields are empty.",
-                    "Error",
-                    JOptionPane.ERROR_MESSAGE);
-        }
+    @FXML
+    private TextField flightManEditTfOrigin;
 
-    }
+    @FXML
+    private TextField flightManEditTfDestination;
 
-    private void registerFlight (TextField origin, TextField destination, TextField departure, TextField designatedAirplane) {
-        FlightBusiness fb = new FlightBusiness();
+    @FXML
+    private TextField flightManEditTfDepartureTime;
 
+    @FXML
+    private TextField flightManEditTfDesignatedPlane;
 
-        Flight f = new Flight(
-                origin.getText(),
-                destination.getText(),
-                fb.timeParser(departure.getText()),
-                Integer.parseInt(designatedAirplane.getText()));
-        FlightDao fDao = new FlightDao();
-        fDao.createFlight(f);
-    }
+    @FXML
+    private Button flightManEditBtnClear;
 
-    private void clearFields () {
-        flightOriginField.setText("");
-        flightDestinationField.setText("");
-        flightDepartureField.setText("");
-        flightDesignatedAirplaneField.setText("");
-    }
+    @FXML
+    private Button flightManEditBtnSave;
 
-    private boolean notEmptyField (TextField toTest) {
-        if (toTest.getText().isEmpty()) {
-            return false;
-        } else {
-            return true;
-        }
-    }
+    @FXML
+    private TextField flightManDelTfId;
+
+    @FXML
+    private Button flightManDelBtnSurvey;
+
+    @FXML
+    private Label flightManDelLabOrigin;
+
+    @FXML
+    private Label flightManDelLabDestination;
+
+    @FXML
+    private Label flightManDelLabDepartureTime;
+
+    @FXML
+    private Label flightManDelLabDesignatedAirplane;
+
+    @FXML
+    private Button flightManDelBtnDelete;
+
+    @FXML
+    private TableView<?> flightTab;
+
+    @FXML
+    private TableColumn<?, ?> flightTabClnID;
+
+    @FXML
+    private TableColumn<?, ?> flightTabClnOrigin;
+
+    @FXML
+    private TableColumn<?, ?> flightTabClnDestination;
+
+    @FXML
+    private TableColumn<?, ?> flightTabClnDepartureTime;
+
+    @FXML
+    private TableColumn<?, ?> flightTabClnDesignatedAirplane;
+
+    @FXML
+    private TableColumn<?, ?> flightTabClnAvailableSeats;
+
+    @FXML
+    private Button flightTabBtnRefresh;
 
 }

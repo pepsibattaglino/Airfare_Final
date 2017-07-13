@@ -33,10 +33,27 @@ public class ApplicationController {
     private Pane paneForLoad;
 
     @FXML
-    private void callOtherPane(ActionEvent event) throws IOException {
-        Pane pane = FXMLLoader.load(getClass().getResource("TestView.fxml"));
+    private void callCustomer(ActionEvent event) throws IOException {
+        Pane pane = FXMLLoader.load(getClass().getResource("/customer/CustomerView.fxml"));
         paneForLoad.getChildren().setAll(pane);
-        //paneForLoad.getChildren().add(pane);
+    }
+
+    @FXML
+    private void callSales(ActionEvent event) throws IOException {
+        Pane pane = FXMLLoader.load(getClass().getResource("/sale/SaleView.fxml"));
+        paneForLoad.getChildren().setAll(pane);
+    }
+
+    @FXML
+    private void callFlight(ActionEvent event) throws IOException {
+        Pane pane = FXMLLoader.load(getClass().getResource("/flight/FlightView.fxml"));
+        paneForLoad.getChildren().setAll(pane);
+    }
+
+    @FXML
+    private void callAirplane(ActionEvent event) throws IOException {
+        Pane pane = FXMLLoader.load(getClass().getResource("/airplane/AirplaneView.fxml"));
+        paneForLoad.getChildren().setAll(pane);
     }
 
 }

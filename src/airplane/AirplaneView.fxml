@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="575.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="575.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="airplane.AirplaneControllerOlder">
    <children>
       <VBox prefHeight="200.0" prefWidth="100.0" spacing="15.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -47,7 +47,7 @@
                                                 <TextField fx:id="airplaneManRegTfCode" />
                                                 <Label text="Model:" />
                                                 <TextField fx:id="airplaneManRegTfModel" />
-                                                <Label text="Quantities of seats:" />
+                                                <Label text="Quantity of seats:" />
                                                 <TextField fx:id="airplaneManRegTfQntSeat" />
                                                 <Region prefHeight="200.0" prefWidth="200.0" />
                                                 <HBox alignment="TOP_RIGHT" spacing="10.0" VBox.vgrow="ALWAYS">
@@ -85,7 +85,7 @@
                                                       <TextField fx:id="airplaneManEditTfCode" />
                                                       <Label text="Model:" />
                                                       <TextField fx:id="airplaneManEditTfModel" />
-                                                      <Label text="Quantities of seats:" />
+                                                      <Label text="Quantity of seats:" />
                                                       <TextField fx:id="airplaneManEditTfQntSeats" />
                                                       <HBox alignment="TOP_RIGHT" spacing="10.0" VBox.vgrow="ALWAYS">
                                                          <children>
@@ -136,7 +136,7 @@
                                                       <Insets left="10.0" />
                                                    </VBox.margin>
                                                 </Label>
-                                                <Label text="Quantities of seats:" />
+                                                <Label text="Quantity of seats:" />
                                                 <Label fx:id="airplaneManDelLabQntSeats" text="Label">
                                                    <font>
                                                       <Font name="System Bold" size="12.0" />
@@ -175,7 +175,7 @@
                             <TableColumn fx:id="airplaneTabClnId" minWidth="20.0" prefWidth="50.0" text="ID" />
                             <TableColumn fx:id="airplaneTabClnCode" minWidth="20.0" prefWidth="177.0" text="Code" />
                               <TableColumn fx:id="airplaneTabClnModel" minWidth="20.0" prefWidth="183.0" text="Model" />
-                              <TableColumn fx:id="airplaneTabClnQntSeats" minWidth="20.0" prefWidth="125.0" text="Quantities of seats" />
+                              <TableColumn fx:id="airplaneTabClnQntSeats" minWidth="20.0" prefWidth="125.0" text="Quantity of seats" />
                           </columns>
                         </TableView>
                      </children>
