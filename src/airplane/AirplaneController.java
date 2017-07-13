@@ -14,6 +14,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.VBox;
 
 import java.net.URL;
 import java.util.ArrayList;
@@ -107,7 +108,7 @@ public class AirplaneController implements Initializable{
     private TextField deleteSurvey = airplaneManDelTfId;
     private Label[] deleteLabels = new Label[]{airplaneManDelLabCode, airplaneManDelLabModel, airplaneManDelLabQntSeats};
 
-    private void refreshBernardo(){
+    private void refresh(){
         registerFields = new TextField[]{airplaneManRegTfCode, airplaneManRegTfModel, airplaneManRegTfQntSeat};
         editFields = new TextField[]{airplaneManEditTfCode, airplaneManEditTfModel, airplaneManEditTfQntSeats};
         editSurvey = airplaneManEditTfId;
@@ -243,7 +244,7 @@ public class AirplaneController implements Initializable{
      */
 
     public void btnActionSaveRegister(ActionEvent event) {
-        refreshBernardo();
+        refresh();
         if(allFieldsFilled(registerFields)) {           // Check for empty fields
             if (allRulesComplied(registerFields)) {     // Check for rule compliance
                 if (!existsOnDbArray(registerFields)) { // Check for repetition on DB
@@ -259,7 +260,7 @@ public class AirplaneController implements Initializable{
     }
 
     public void btnClearFieldsRegister(ActionEvent event) {
-        refreshBernardo();
+        refresh();
         clearFields(registerFields);
     }
 
@@ -268,7 +269,7 @@ public class AirplaneController implements Initializable{
      */
 
     public void btnActionSurveyEdit(ActionEvent event) {
-        refreshBernardo();
+        refresh();
 
         if (allFieldsFilled(toAry(editSurvey))) {
             if (existsOnDb(editSurvey)) {
@@ -282,7 +283,7 @@ public class AirplaneController implements Initializable{
     }
 
     public void btnActionSaveEdit(ActionEvent event) {
-        refreshBernardo();
+        refresh();
         if(allFieldsFilled(editFields)) {           // Check for empty fields
             if (allRulesComplied(editFields)) {     // Check for rule compliance
                 editObject(editFields);
@@ -295,7 +296,7 @@ public class AirplaneController implements Initializable{
     }
 
     public void btnClearFieldsEdit(ActionEvent event) {
-        refreshBernardo();
+        refresh();
         clearFields(editFields);
         clearField(editSurvey);
     }
@@ -305,7 +306,7 @@ public class AirplaneController implements Initializable{
      */
 
     public void btnActionSurveyDelete(ActionEvent event) {
-        refreshBernardo();
+        refresh();
         if (allFieldsFilled(toAry(deleteSurvey))) {
             if (existsOnDb(deleteSurvey)) {
                 fillLabels(findById(deleteSurvey.getText()));
@@ -318,15 +319,16 @@ public class AirplaneController implements Initializable{
     }
 
     public void btnActionDelete(ActionEvent event) {
-        refreshBernardo();
+        refresh();
         delete(findById(deleteSurvey.getText()));
         clearField(deleteSurvey);
         clearLabels();
     }
 
 
-
-
+    public void btnActionRefresh(ActionEvent event) {
+        System.out.println("The Refresh button has been pressed.");
+    }
 
 
     private List<Airplane> listAirplanes;
@@ -354,11 +356,11 @@ public class AirplaneController implements Initializable{
         airplaneTab.setItems(observableListAirplanes);
     }
 
-    @FXML
-    void treatTabBtnRefresh(ActionEvent event) {
-        System.out.println("The Refresh button has been pressed.");
-        airplaneTab.refresh();
-    }
+//    @FXML
+//    void treatTabBtnRefresh(ActionEvent event) {
+//        System.out.println("The Refresh button has been pressed.");
+//        airplaneTab.refresh();
+//    }
 
 
 }
