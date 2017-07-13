@@ -3,47 +3,96 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TitledPane?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="registerAirplanePane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="300.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sale.SaleController">
+<AnchorPane prefHeight="575.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sale.SaleController">
    <children>
-      <VBox fx:id="formSale" spacing="2.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <VBox prefHeight="200.0" prefWidth="100.0" spacing="15.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Label text="Make a sale">
+            <Label text="Sales">
                <font>
-                  <Font name="System Bold" size="14.0" />
+                  <Font name="System Bold" size="24.0" />
                </font>
             </Label>
-            <Region prefHeight="10.0" prefWidth="200.0" />
-            <Label text="Customer ID:" />
-            <TextField fx:id="saleCustomerField" />
-            <Region prefHeight="10.0" prefWidth="200.0" VBox.vgrow="ALWAYS" />
-            <Label layoutX="22.0" layoutY="22.0" text="Flight ID:" />
-            <TextField fx:id="saleFlightField" layoutX="22.0" layoutY="45.0" />
-            <Region prefHeight="10.0" prefWidth="200.0" VBox.vgrow="ALWAYS" />
-            <HBox spacing="20.0">
+            <HBox spacing="25.0" VBox.vgrow="ALWAYS">
+               <children>
+                  <VBox spacing="10.0" HBox.hgrow="ALWAYS">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                     <children>
+                        <Label text="Register a sale">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <TitledPane animated="false" prefHeight="600.0" text="Input" VBox.vgrow="ALWAYS">
+                          <content>
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                 <children>
+                                    <VBox prefHeight="200.0" prefWidth="100.0" spacing="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                       <children>
+                                          <Label text="Client:" />
+                                          <TextField fx:id="saleClientInput" />
+                                          <Label text="Flight:" />
+                                          <TextField fx:id="saleFlightInput" />
+                                          <Region prefHeight="300.0" prefWidth="200.0" />
+                                          <HBox alignment="TOP_RIGHT" spacing="10.0" VBox.vgrow="ALWAYS">
+                                             <children>
+                                                <Button fx:id="saleBtnClear" mnemonicParsing="false" onAction="#treatClearButton" text="Clear" />
+                                                <Button fx:id="saleBtnSave" mnemonicParsing="false" onAction="#treatSaveButton" text="Save" />
+                                             </children>
+                                             <padding>
+                                                <Insets top="10.0" />
+                                             </padding>
+                                          </HBox>
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </AnchorPane>
+                          </content>
+                        </TitledPane>
+                     </children>
+                  </VBox>
+                  <VBox prefWidth="500.0" spacing="10.0" HBox.hgrow="ALWAYS">
+                     <children>
+                        <Label text="Listing">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <TableView VBox.vgrow="ALWAYS">
+                          <columns>
+                            <TableColumn minWidth="20.0" prefWidth="125.0" text="C1" />
+                            <TableColumn minWidth="20.0" prefWidth="125.0" text="C2" />
+                              <TableColumn minWidth="20.0" prefWidth="125.0" text="C3" />
+                              <TableColumn minWidth="20.0" prefWidth="125.0" text="C4" />
+                          </columns>
+                        </TableView>
+                     </children>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </VBox>
+               </children>
+            </HBox>
+            <HBox>
                <children>
                   <Region HBox.hgrow="ALWAYS" />
-                  <Button fx:id="btnClear" mnemonicParsing="false" onAction="#treatClearButton" text="Clear">
-                     <HBox.margin>
-                        <Insets />
-                     </HBox.margin>
-                  </Button>
-                  <Button fx:id="btnSave" mnemonicParsing="false" onAction="#treatSaveButton" text="Save">
-                     <HBox.margin>
-                        <Insets />
-                     </HBox.margin>
-                  </Button>
+                  <Button fx:id="saleBtnRefresh" mnemonicParsing="false" text="Refresh" />
                </children>
             </HBox>
          </children>
          <padding>
-            <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
+            <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
          </padding>
       </VBox>
    </children>

@@ -1,81 +1,59 @@
 package sale;
 
+/**
+ * Created by Bernardo on 13/07/2017.
+ */
 import flight.Flight;
 import flight.FlightDao;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.VBox;
 
 import javax.swing.*;
+
 import java.time.LocalDateTime;
 
-/**
- * Created by G.Battaglino on 08/07/2017.
- */
+import static messages.MessageController.eMes;
+
 public class SaleController {
 
-    /*@FXML
-    private VBox formSale;*/
+    @FXML
+    private TextField saleClientInput;
 
     @FXML
-    private TextField saleCustomerField;
+    private TextField saleFlightInput;
 
     @FXML
-    private TextField saleFlightField;
-
-    /*@FXML
-    private Button btnClear;
+    private Button saleBtnClear;
 
     @FXML
-    private Button btnSave;*/
+    private Button saleBtnSave;
 
     @FXML
-    void treatClearButton(ActionEvent event) {
-        System.out.println("The Clear button has been pressed.");
-        clearFields();
-    }
+    private Button saleBtnRefresh;
 
-    @FXML
-    void treatSaveButton(ActionEvent event) {
 
+
+    public void treatSaveButton(ActionEvent event) {
         System.out.println("The Save button has been pressed.");
-
-        if (notEmptyField(saleCustomerField) &&
-            notEmptyField(saleFlightField)) {
-
+        if (notEmptyField(saleClientInput) && notEmptyField(saleFlightInput)) {
             SaleBusiness sb = new SaleBusiness();
+            if (sb.saleCustomerChecker(saleClientInput.getText()) && sb.saleFlightChecker(saleFlightInput.getText())) {
 
-            if (sb.saleCustomerChecker(saleCustomerField.getText()) &&
-                sb.saleFlightChecker(saleFlightField.getText())) {
-
-                registerSale(saleCustomerField, saleFlightField);
+                registerSale(saleClientInput, saleFlightInput);
                 clearFields();
-                JOptionPane.showMessageDialog(null,
-                        "Sale saved with success!");
-
+                eMes("Success!", "Sale saved with success!");
             } else {
-
                 System.out.println("Failed to verify the Sale.");
-
             }
-
         } else {
-
-            JOptionPane.showMessageDialog(null,
-                    "One or more required fields are empty.",
-                    "Error",
-                    JOptionPane.ERROR_MESSAGE);
-
+            eMes("Error", "One or more required fields are empty.");
         }
-
     }
 
     private void registerSale (TextField saleCustomer, TextField saleFlight) {
         SaleDao sDao = new SaleDao();
-
-
         Sale s = new Sale(
                 Integer.parseInt(saleCustomer.getText()),
                 Integer.parseInt(saleFlight.getText()),
@@ -88,25 +66,22 @@ public class SaleController {
         fDao.updateFlights(sFlight);
     }
 
-    private void clearFields () {
-
-        saleCustomerField.setText("");
-
-        saleFlightField.setText("");
-
+    private boolean notEmptyField (TextField toTest) {
+        if (toTest.getText().isEmpty()) {
+            return false;
+        } else {
+            return true;
+        }
     }
 
-    private boolean notEmptyField (TextField toTest) {
+    public void treatClearButton(ActionEvent event) {
+        System.out.println("The Clear button has been pressed.");
+        clearFields();
+    }
 
-        if (toTest.getText().isEmpty()) {
-
-            return false;
-
-        } else {
-
-            return true;
-
-        }
+    private void clearFields() {
+        saleClientInput.setText("");
+        saleFlightInput.setText("");
     }
 
 }
