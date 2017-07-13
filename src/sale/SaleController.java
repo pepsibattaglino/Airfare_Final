@@ -5,18 +5,28 @@ package sale;
  */
 import flight.Flight;
 import flight.FlightDao;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 
 import javax.swing.*;
 
+import java.net.URL;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.ResourceBundle;
 
 import static messages.MessageController.eMes;
 
-public class SaleController {
+public class SaleController implements Initializable {
 
     @FXML
     private TextField saleClientInput;
@@ -32,6 +42,21 @@ public class SaleController {
 
     @FXML
     private Button saleBtnRefresh;
+
+    @FXML
+    private TableView<Sale> saleTab;
+
+    @FXML
+    private TableColumn<Sale, String> saleTabClnId;
+
+    @FXML
+    private TableColumn<Sale, String> saleTabClnCustomerName;
+
+    @FXML
+    private TableColumn<Sale, String> saleTabClnPlaneModel;
+
+    @FXML
+    private TableColumn<Sale, String> saleTabClnTimeOfPurchase;
 
 
 
@@ -83,5 +108,31 @@ public class SaleController {
         saleClientInput.setText("");
         saleFlightInput.setText("");
     }
+
+    private List<Sale> listSales;
+    private ObservableList<Sale> observableListSales;
+    private SaleDao sDao = new SaleDao();
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        try {
+            listSales = new ArrayList<>();
+            listSales = sDao.listAllSales();
+            loadTableViewSales();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void loadTableViewSales() {
+        saleTabClnId.setCellValueFactory(new PropertyValueFactory<>("saleID"));
+        saleTabClnCustomerName.setCellValueFactory(new PropertyValueFactory<>("saleCustomer"));
+        saleTabClnPlaneModel.setCellValueFactory(new PropertyValueFactory<>("saleFlight"));
+        saleTabClnTimeOfPurchase.setCellValueFactory(new PropertyValueFactory<>("timeOfPurchase"));
+
+        observableListSales = FXCollections.observableArrayList(listSales);
+        saleTab.setItems(observableListSales);
+    }
+
 
 }

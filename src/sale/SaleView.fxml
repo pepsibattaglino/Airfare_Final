@@ -69,12 +69,12 @@
                               <Font size="14.0" />
                            </font>
                         </Label>
-                        <TableView VBox.vgrow="ALWAYS">
+                        <TableView fx:id="saleTab" VBox.vgrow="ALWAYS">
                           <columns>
-                            <TableColumn minWidth="20.0" prefWidth="125.0" text="C1" />
-                            <TableColumn minWidth="20.0" prefWidth="125.0" text="C2" />
-                              <TableColumn minWidth="20.0" prefWidth="125.0" text="C3" />
-                              <TableColumn minWidth="20.0" prefWidth="125.0" text="C4" />
+                            <TableColumn fx:id="saleTabClnId" minWidth="20.0" prefWidth="50.0" text="ID" />
+                            <TableColumn fx:id="saleTabClnCustomerName" minWidth="20.0" prefWidth="191.0" text="Customer name" />
+                              <TableColumn fx:id="saleTabClnPlaneModel" minWidth="20.0" prefWidth="142.0" text="Plane model" />
+                              <TableColumn fx:id="saleTabClnTimeOfPurchase" minWidth="20.0" prefWidth="152.0" text="Time of purchase" />
                           </columns>
                         </TableView>
                      </children>
