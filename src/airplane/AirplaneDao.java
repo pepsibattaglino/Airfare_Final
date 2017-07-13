@@ -25,7 +25,7 @@ public class AirplaneDao {
      * @return success
      */
     public boolean createAirplane(Airplane airplane) {
-        if (!isNotEmpty(locateAirplaneByCode(airplane.getCode()))) {
+        if (isNotEmpty(airplane)) {
             con = DBConnector.getConnection();
             String sql = "INSERT INTO airplane (code, model, qntSeats) VALUES (?, ?, ?)";
             PreparedStatement ppst = null;

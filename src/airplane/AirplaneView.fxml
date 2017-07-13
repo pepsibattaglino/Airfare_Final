@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="575.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="airplane.AirplaneControllerOlder">
+<AnchorPane prefHeight="575.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="airplane.AirplaneController">
    <children>
       <VBox prefHeight="200.0" prefWidth="100.0" spacing="15.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -52,8 +52,8 @@
                                                 <Region prefHeight="200.0" prefWidth="200.0" />
                                                 <HBox alignment="TOP_RIGHT" spacing="10.0" VBox.vgrow="ALWAYS">
                                                    <children>
-                                                      <Button fx:id="airplaneManRegBtnClear" mnemonicParsing="false" text="Clear" />
-                                                      <Button fx:id="airplaneManRegBtnSave" mnemonicParsing="false" text="Save" />
+                                                      <Button fx:id="airplaneManRegBtnClear" mnemonicParsing="false" onAction="#btnClearFieldsRegister" text="Clear" />
+                                                      <Button fx:id="airplaneManRegBtnSave" mnemonicParsing="false" onAction="#btnActionSaveRegister" text="Save" />
                                                    </children>
                                                    <padding>
                                                       <Insets top="10.0" />
@@ -75,7 +75,7 @@
                                                 <HBox spacing="10.0">
                                                    <children>
                                                       <TextField fx:id="airplaneManEditTfId" HBox.hgrow="ALWAYS" />
-                                                      <Button fx:id="airplaneManEditBtnSurvey" mnemonicParsing="false" text="Survey" />
+                                                      <Button fx:id="airplaneManEditBtnSurvey" mnemonicParsing="false" onAction="#btnActionSurveyEdit" text="Survey" />
                                                    </children>
                                                 </HBox>
                                                 <Region prefHeight="200.0" prefWidth="200.0" />
@@ -89,8 +89,8 @@
                                                       <TextField fx:id="airplaneManEditTfQntSeats" />
                                                       <HBox alignment="TOP_RIGHT" spacing="10.0" VBox.vgrow="ALWAYS">
                                                          <children>
-                                                            <Button fx:id="airplaneManEditBtnClear" mnemonicParsing="false" text="Clear" />
-                                                            <Button fx:id="airplaneManEditBtnSave" mnemonicParsing="false" text="Save" />
+                                                            <Button fx:id="airplaneManEditBtnClear" mnemonicParsing="false" onAction="#btnClearFieldsEdit" text="Clear" />
+                                                            <Button fx:id="airplaneManEditBtnSave" mnemonicParsing="false" onAction="#btnActionSaveEdit" text="Save" />
                                                          </children>
                                                          <padding>
                                                             <Insets top="10.0" />
@@ -114,7 +114,7 @@
                                                 <HBox spacing="10.0">
                                                    <children>
                                                       <TextField fx:id="airplaneManDelTfId" HBox.hgrow="ALWAYS" />
-                                                      <Button fx:id="airplaneManDelBtnSurvey" mnemonicParsing="false" text="Survey" />
+                                                      <Button fx:id="airplaneManDelBtnSurvey" mnemonicParsing="false" onAction="#btnActionSurveyDelete" text="Survey" />
                                                    </children>
                                                 </HBox>
                                                 <Region prefHeight="200.0" prefWidth="200.0" />
@@ -147,7 +147,7 @@
                                                 </Label>
                                                 <HBox alignment="TOP_RIGHT" spacing="10.0" VBox.vgrow="ALWAYS">
                                                    <children>
-                                                      <Button fx:id="airplaneManDelBtnDel" mnemonicParsing="false" text="Delete" />
+                                                      <Button fx:id="airplaneManDelBtnDel" mnemonicParsing="false" onAction="#btnActionDelete" text="Delete" />
                                                    </children>
                                                    <padding>
                                                       <Insets top="10.0" />
