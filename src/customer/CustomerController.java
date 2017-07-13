@@ -96,31 +96,6 @@ public class CustomerController implements Initializable {
     @FXML
     private Button customerTabBtnRefresh;
 
-    private List<Customer> listCustomers;
-    private ObservableList<Customer> observableListCustomers;
-    private CustomerDao cDao = new CustomerDao();
-
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        try {
-            listCustomers = new ArrayList<>();
-            listCustomers = cDao.listAllCustomers();
-            loadTableViewCustomers();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    private void loadTableViewCustomers() {
-        customerTabClnId.setCellValueFactory(new PropertyValueFactory<>("customerID"));
-        customerTabClnIdentification.setCellValueFactory(new PropertyValueFactory<>("identification"));
-        customerTabClnName.setCellValueFactory(new PropertyValueFactory<>("customerName"));
-        customerTabClnPhone.setCellValueFactory(new PropertyValueFactory<>("phone"));
-
-        observableListCustomers = FXCollections.observableArrayList(listCustomers);
-        customerTab.setItems(observableListCustomers);
-    }
-
     @FXML
     void treatTabBtnRefresh(ActionEvent event) {
         System.out.println("The Refresh button has been pressed.");
@@ -140,11 +115,11 @@ public class CustomerController implements Initializable {
     private Label[] deleteLabels = new Label[]{customerManDelLabIdentification, customerManDelLabName, customerManDelLabPhone};
 
     private void refreshBernardo(){
-        TextField[] registerFields = new TextField[]{customerManRegTfIdentification, customerManRegTfName, customerManRegTfPhone};
-        TextField[] editFields = new TextField[]{customerManEditTfIdentification, customerManEditTfName, customerManEditTfPhone};
-        TextField editSurvey = customerManEditTfId;
-        TextField deleteSurvey = customerManDelTfId;
-        Label[] deleteLabels = new Label[]{customerManDelLabIdentification, customerManDelLabName, customerManDelLabPhone};
+        registerFields = new TextField[]{customerManRegTfIdentification, customerManRegTfName, customerManRegTfPhone};
+        editFields = new TextField[]{customerManEditTfIdentification, customerManEditTfName, customerManEditTfPhone};
+        editSurvey = customerManEditTfId;
+        deleteSurvey = customerManDelTfId;
+        deleteLabels = new Label[]{customerManDelLabIdentification, customerManDelLabName, customerManDelLabPhone};
     }
 
     private boolean allRulesComplied(TextField[] listField) {
@@ -354,6 +329,31 @@ public class CustomerController implements Initializable {
         delete(findById(deleteSurvey.getText()));
         clearField(deleteSurvey);
         clearLabels();
+    }
+
+    private List<Customer> listCustomers;
+    private ObservableList<Customer> observableListCustomers;
+    private CustomerDao cDao = new CustomerDao();
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        try {
+            listCustomers = new ArrayList<>();
+            listCustomers = cDao.listAllCustomers();
+            loadTableViewCustomers();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void loadTableViewCustomers() {
+        customerTabClnId.setCellValueFactory(new PropertyValueFactory<>("customerID"));
+        customerTabClnIdentification.setCellValueFactory(new PropertyValueFactory<>("identification"));
+        customerTabClnName.setCellValueFactory(new PropertyValueFactory<>("customerName"));
+        customerTabClnPhone.setCellValueFactory(new PropertyValueFactory<>("phone"));
+
+        observableListCustomers = FXCollections.observableArrayList(listCustomers);
+        customerTab.setItems(observableListCustomers);
     }
 
 }
