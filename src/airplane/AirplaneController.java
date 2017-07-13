@@ -13,7 +13,7 @@ import javafx.scene.control.TextField;
 
 import static messages.MessageController.eMes;
 
-public class AirplaneController {
+public class AirplaneController{
 
     @FXML
     private TextField airplaneManRegTfCode;
@@ -147,12 +147,20 @@ public class AirplaneController {
     }
 
     private boolean existsOnDbArray(TextField[] listField) {
-        return existsOnDb(listField[0]);
+        AirplaneDao aDao = new AirplaneDao();
+        String idTest = listField[0].getText();
+        Airplane test = aDao.locateAirplaneByCode(idTest);
+        if (aDao.isNotEmpty(test)) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     private boolean existsOnDb(TextField listField) {
         AirplaneDao aDao = new AirplaneDao();
-        Airplane test = aDao.locateAirplaneByCode(listField.getText());
+        String idTest = listField.getText();
+        Airplane test = aDao.locateAirplaneById(idTest);
         if (aDao.isNotEmpty(test)) {
             return true;
         } else {
@@ -175,6 +183,12 @@ public class AirplaneController {
         deleteLabels[0].setText(airplane.getCode());
         deleteLabels[1].setText(airplane.getModel());
         deleteLabels[2].setText(String.valueOf(airplane.getQntSeats()));
+    }
+
+    private void clearLabels() {
+        deleteLabels[0].setText("");
+        deleteLabels[1].setText("");
+        deleteLabels[2].setText("");
     }
 
     private TextField[] toAry(TextField tf) { // <<<<<<< Check if needed
@@ -211,6 +225,10 @@ public class AirplaneController {
         }
     }
 
+    private void clearField(TextField field) {
+        field.setText("");
+    }
+
     /**
      * REGISTER
      */
@@ -242,6 +260,7 @@ public class AirplaneController {
 
     public void btnActionSurveyEdit(ActionEvent event) {
         refresh();
+
         if (allFieldsFilled(toAry(editSurvey))) {
             if (existsOnDb(editSurvey)) {
                 fillFields(findById(editSurvey.getText()));
@@ -259,6 +278,7 @@ public class AirplaneController {
             if (allRulesComplied(editFields)) {     // Check for rule compliance
                 editObject(editFields);
                 clearFields(editFields);
+                clearField(editSurvey);
             }
         } else {
             eMes("Could not save", "There is at least one empty required field.");
@@ -268,6 +288,7 @@ public class AirplaneController {
     public void btnClearFieldsEdit(ActionEvent event) {
         refresh();
         clearFields(editFields);
+        clearField(editSurvey);
     }
 
     /**
@@ -290,6 +311,8 @@ public class AirplaneController {
     public void btnActionDelete(ActionEvent event) {
         refresh();
         delete(findById(deleteSurvey.getText()));
+        clearField(deleteSurvey);
+        clearLabels();
     }
 
 }
