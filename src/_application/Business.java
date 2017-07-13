@@ -38,10 +38,14 @@ public class Business{
             LocalDateTime.parse(toCheck, timeFormatter);
             System.out.println(toCheck + " validation passed.");
             return true;
-        } catch (NumberFormatException e) {
-            System.out.println(toCheck + " validation error.");
+        } catch (RuntimeException e) {
+            System.out.println(">>>>>>>>>>>>>>>>>: " + toCheck + " validation error.");
             MessageController.eMes("Validation error", errorMessage);
             return false;
+//        } catch (RuntimeException e) {
+//            System.out.println(">>>>>>>>>>>>>>>>>: " + toCheck + " validation error.");
+//            MessageController.eMes("Validation error", errorMessage);
+//            return false;
         }
 
     }

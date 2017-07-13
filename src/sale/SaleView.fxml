@@ -71,10 +71,10 @@
                         </Label>
                         <TableView fx:id="saleTab" VBox.vgrow="ALWAYS">
                           <columns>
-                            <TableColumn fx:id="saleTabClnId" minWidth="20.0" prefWidth="50.0" text="ID" />
-                            <TableColumn fx:id="saleTabClnCustomerName" minWidth="20.0" prefWidth="191.0" text="Customer name" />
-                              <TableColumn fx:id="saleTabClnPlaneModel" minWidth="20.0" prefWidth="142.0" text="Plane model" />
-                              <TableColumn fx:id="saleTabClnTimeOfPurchase" minWidth="20.0" prefWidth="152.0" text="Time of purchase" />
+                            <TableColumn fx:id="saleTabClnId" minWidth="20.0" prefWidth="110.0" text="Sale ID" />
+                            <TableColumn fx:id="saleTabClnCustomerName" minWidth="20.0" prefWidth="110.0" text="Customer ID" />
+                              <TableColumn fx:id="saleTabClnPlaneModel" minWidth="20.0" prefWidth="110.0" text="Flight ID" />
+                              <TableColumn fx:id="saleTabClnTimeOfPurchase" minWidth="20.0" prefWidth="200.0" text="Time of purchase" />
                           </columns>
                         </TableView>
                      </children>
