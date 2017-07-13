@@ -1,109 +1,88 @@
 package customer;
 
-import javafx.event.ActionEvent;
+/**
+ * Created by Bernardo on 13/07/2017.
+ */
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.VBox;
 
-import javax.swing.*;
-
-/**
- * Created by G.Battaglino on 08/07/2017.
- */
 public class CustomerController {
 
-   /* @FXML
-    private VBox formCustomer;*/
+    @FXML
+    private TextField customerManRegTfIdentification;
 
     @FXML
-    private TextField customerIdentificationField;
+    private TextField customerManRegTfName;
 
     @FXML
-    private TextField customerNameField;
+    private TextField customerManRegTfPhone;
 
     @FXML
-    private TextField customerPhoneField;
-
-   /* @FXML
-    private Button btnClear;
+    private Button customerManRegBtnClear;
 
     @FXML
-    private Button btnSave;*/
+    private Button customerManRegBtnSave;
 
     @FXML
-    void treatClearButton(ActionEvent event) {
-        System.out.println("The Clear button has been pressed.");
-        clearFields();
-
-    }
+    private TextField customerManEditTfId;
 
     @FXML
-    void treatSaveButton(ActionEvent event) {
-        System.out.println("The Save button has been pressed.");
+    private Button customerManEditBtnSurvey;
 
-        if (notEmptyField(customerIdentificationField) &&
-            notEmptyField(customerNameField) &&
-            notEmptyField(customerPhoneField)) {
+    @FXML
+    private TextField customerManEditTfIdentification;
 
-            CustomerBusiness cb = new CustomerBusiness();
+    @FXML
+    private TextField customerManEditTfName;
 
-            if (cb.customerIdentificationChecker(customerIdentificationField.getText()) &&
-                cb.customerNameChecker(customerNameField.getText()) &&
-                cb.customerPhoneChecker(customerPhoneField.getText())) {
+    @FXML
+    private TextField customerManEditTfPhone;
 
-                if (registerCustomer(customerIdentificationField, customerNameField, customerPhoneField)) {
-                    clearFields();
-                    JOptionPane.showMessageDialog(null,
-                            "Customer saved with success!");
-                } else {
-                    System.out.println("Failed to register the customer.");
-                }
+    @FXML
+    private Button customerManEditBtnClear;
 
-            } else {
+    @FXML
+    private Button customerManEditBtnSave;
 
-                System.out.println("Failed to verify the customer.");
+    @FXML
+    private TextField customerManDelTfId;
 
-            }
+    @FXML
+    private Button customerManDelBtnSurvey;
 
-        } else {
+    @FXML
+    private Label customerManDelLabIdentification;
 
-            JOptionPane.showMessageDialog(null,
-                    "One or more required fields are empty.",
-                    "Error",
-                    JOptionPane.ERROR_MESSAGE);
+    @FXML
+    private Label customerManDelLabName;
 
-        }
+    @FXML
+    private Label customerManDelLabPhone;
 
-    }
+    @FXML
+    private Button customerManDelBtnDel;
 
-    private boolean registerCustomer (TextField identification, TextField name, TextField phone) {
-        try {
-            Customer c = new Customer(
-                    identification.getText(),
-                    name.getText(),
-                    phone.getText());
-            CustomerDao cDao = new CustomerDao();
-            cDao.createCustomer(c);
-            return true;
-        } catch (Exception e) {
-            e.printStackTrace();
-            return false;
-        }
-    }
+    @FXML
+    private TableView<?> customerTab;
 
-    private void clearFields () {
-        customerIdentificationField.setText("");
-        customerNameField.setText("");
-        customerPhoneField.setText("");
-    }
+    @FXML
+    private TableColumn<?, ?> customerTabClnId;
 
-    private boolean notEmptyField (TextField toTest) {
-        if (toTest.getText().isEmpty()) {
-            return false;
-        } else {
-            return true;
-        }
-    }
+    @FXML
+    private TableColumn<?, ?> customerTabClnIdentification;
+
+    @FXML
+    private TableColumn<?, ?> customerTabClnName;
+
+    @FXML
+    private TableColumn<?, ?> customerTabClnPhone;
+
+    @FXML
+    private Button customerTabBtnRefresh;
 
 }
+

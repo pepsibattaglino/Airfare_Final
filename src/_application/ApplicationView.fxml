@@ -18,7 +18,7 @@
          <right>
             <VBox prefWidth="150.0" BorderPane.alignment="CENTER">
                <children>
-                  <Button fx:id="btnCustomers" contentDisplay="TOP" mnemonicParsing="false" prefHeight="200.0" prefWidth="150.0" text="Customers" VBox.vgrow="ALWAYS">
+                  <Button fx:id="btnCustomers" contentDisplay="TOP" mnemonicParsing="false" onAction="#callCustomer" prefHeight="200.0" prefWidth="150.0" text="Customers" VBox.vgrow="ALWAYS">
                      <VBox.margin>
                         <Insets />
                      </VBox.margin>
@@ -39,7 +39,7 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button fx:id="btnFlights" contentDisplay="TOP" layoutX="10.0" layoutY="210.0" mnemonicParsing="false" prefHeight="200.0" prefWidth="150.0" text="Flights">
+                  <Button fx:id="btnFlights" contentDisplay="TOP" layoutX="10.0" layoutY="210.0" mnemonicParsing="false" onAction="#callFlight" prefHeight="200.0" prefWidth="150.0" text="Flights">
                      <graphic>
                         <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -48,7 +48,7 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button fx:id="btnAirplanes" contentDisplay="TOP" layoutX="10.0" layoutY="202.0" mnemonicParsing="false" prefHeight="200.0" prefWidth="150.0" text="Airplanes">
+                  <Button fx:id="btnAirplanes" contentDisplay="TOP" layoutX="10.0" layoutY="202.0" mnemonicParsing="false" onAction="#callAirplane" prefHeight="200.0" prefWidth="150.0" text="Airplanes">
                      <graphic>
                         <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -57,7 +57,7 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button fx:id="btnTest" contentDisplay="TOP" layoutX="10.0" layoutY="298.0" mnemonicParsing="false" onAction="#callOtherPane" prefHeight="200.0" prefWidth="150.0" text="Placeholder">
+                  <Button fx:id="btnTest" contentDisplay="TOP" layoutX="10.0" layoutY="298.0" mnemonicParsing="false" prefHeight="200.0" prefWidth="150.0" text="Placeholder">
                      <graphic>
                         <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
                            <image>

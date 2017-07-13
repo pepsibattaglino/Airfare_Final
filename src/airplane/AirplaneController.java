@@ -1,74 +1,87 @@
 package airplane;
 
-import javafx.fxml.FXML;
-import javafx.event.*;
-import javafx.scene.control.*;
-import javax.swing.*;
-import airplane.AirplaneBusiness;
-
-
 /**
- * Created by Bernardo on 06/07/2017.
+ * Created by Bernardo on 13/07/2017.
  */
+import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
+
 public class AirplaneController {
 
     @FXML
-    private TextField AirplaneCodeField;
+    private TextField airplaneManRegTfCode;
 
     @FXML
-    private TextField AirplaneModelField;
+    private TextField airplaneManRegTfModel;
 
     @FXML
-    private TextField AirplaneQntSeatsField;
+    private TextField airplaneManRegTfQntSeat;
 
-    public void treatSaveButton(ActionEvent event) {
-        System.out.println("The Save button has been pressed.");
-        if (notEmptyField(AirplaneCodeField) && notEmptyField(AirplaneModelField) && notEmptyField(AirplaneQntSeatsField)) {
-            AirplaneBusiness ab = new AirplaneBusiness();
-            if (ab.airplaneCodeChecker(AirplaneCodeField.getText()) &&
-                    ab.airplaneModelChecker(AirplaneModelField.getText()) &&
-                    ab.airplaneQntSeatsChecker(AirplaneQntSeatsField.getText())) {
-                registerAirplane(AirplaneCodeField, AirplaneModelField, AirplaneQntSeatsField);
-                clearFields();
-                JOptionPane.showMessageDialog(null,
-                        "Plane saved with success!");
-            } else {
-                System.out.println("Failed to verify the airplane.");
-            }
+    @FXML
+    private Button airplaneManRegBtnClear;
 
-        } else {
-            JOptionPane.showMessageDialog(null,
-                    "One or more required fields are empty.",
-                    "Error",
-                    JOptionPane.ERROR_MESSAGE);
-        }
-    }
+    @FXML
+    private Button airplaneManRegBtnSave;
 
-    public void treatClearButton(ActionEvent event) {
-        System.out.println("The Clear button has been pressed.");
-        clearFields();
-    }
+    @FXML
+    private TextField airplaneManEditTfId;
 
-    private void registerAirplane (TextField code, TextField model, TextField qntSeats) {
-        Airplane a = new Airplane(
-                code.getText(),
-                model.getText(),
-                Integer.parseInt(qntSeats.getText()));
-        AirplaneDao aDao = new AirplaneDao();
-        aDao.createAirplane(a);
-    }
+    @FXML
+    private Button airplaneManEditBtnSurvey;
 
-    private void clearFields () {
-        AirplaneCodeField.setText("");
-        AirplaneModelField.setText("");
-        AirplaneQntSeatsField.setText("");
-    }
+    @FXML
+    private TextField airplaneManEditTfCode;
 
-    private boolean notEmptyField (TextField toTest) {
-        if (toTest.getText().isEmpty()) {
-            return false;
-        } else {
-            return true;
-        }
-    }
+    @FXML
+    private TextField airplaneManEditTfModel;
+
+    @FXML
+    private TextField airplaneManEditTfQntSeats;
+
+    @FXML
+    private Button airplaneManEditBtnClear;
+
+    @FXML
+    private Button airplaneManEditBtnSave;
+
+    @FXML
+    private TextField airplaneManDelTfId;
+
+    @FXML
+    private Button airplaneManDelBtnSurvey;
+
+    @FXML
+    private Label airplaneManDelLabCode;
+
+    @FXML
+    private Label airplaneManDelLabModel;
+
+    @FXML
+    private Label airplaneManDelLabQntSeats;
+
+    @FXML
+    private Button airplaneManDelBtnDel;
+
+    @FXML
+    private TableView<?> airplaneTab;
+
+    @FXML
+    private TableColumn<?, ?> airplaneTabClnId;
+
+    @FXML
+    private TableColumn<?, ?> airplaneTabClnCode;
+
+    @FXML
+    private TableColumn<?, ?> airplaneTabClnModel;
+
+    @FXML
+    private TableColumn<?, ?> airplaneTabClnQntSeats;
+
+    @FXML
+    private Button airplaneTabBtnRefresh;
+
 }
