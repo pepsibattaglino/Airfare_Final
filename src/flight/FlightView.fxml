@@ -1,55 +1,214 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Accordion?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TitledPane?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="registerAirplanePane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="300.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="flight.FlightController">
+<AnchorPane prefHeight="575.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <VBox fx:id="formFlight" spacing="2.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <VBox prefHeight="200.0" prefWidth="100.0" spacing="15.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Label text="Register flight">
+            <Label text="Flights">
                <font>
-                  <Font name="System Bold" size="14.0" />
+                  <Font name="System Bold" size="24.0" />
                </font>
             </Label>
-            <Region prefHeight="10.0" prefWidth="200.0" />
-            <Label text="Origin:" />
-            <TextField fx:id="flightOriginField" />
-            <Region prefHeight="10.0" prefWidth="200.0" VBox.vgrow="ALWAYS" />
-            <Label layoutX="22.0" layoutY="22.0" text="Destination:" />
-            <TextField fx:id="flightDestinationField" layoutX="22.0" layoutY="45.0" />
-            <Region layoutX="22.0" layoutY="76.0" prefHeight="10.0" prefWidth="200.0" VBox.vgrow="ALWAYS" />
-            <Label layoutX="22.0" layoutY="76.0" text="Departure time:" />
-            <TextField fx:id="flightDepartureField" />
-            <Region layoutX="60.0" layoutY="164.0" prefHeight="10.0" prefWidth="200.0" VBox.vgrow="ALWAYS" />
-            <Label text="Designated airplane ID:" />
-            <TextField fx:id="flightDesignatedAirplaneField" />
-            <Region prefHeight="10.0" prefWidth="200.0" VBox.vgrow="ALWAYS" />
-            <HBox spacing="20.0">
+            <HBox spacing="25.0" VBox.vgrow="ALWAYS">
+               <children>
+                  <VBox spacing="10.0" HBox.hgrow="ALWAYS">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                     <children>
+                        <Label text="Manager">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Accordion VBox.vgrow="ALWAYS">
+                          <panes>
+                            <TitledPane animated="false" text="Register">
+                              <content>
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                       <children>
+                                          <VBox prefHeight="200.0" prefWidth="100.0" spacing="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                             <children>
+                                                <Label text="Origin:" />
+                                                <TextField fx:id="flightManRegTfOrigin" />
+                                                <Label text="Destination:" />
+                                                <TextField fx:id="flightManRegTfDestination" />
+                                                <Label text="Departure time:" />
+                                                <TextField fx:id="flightManRegTfDepartureTime" />
+                                                <Label text="Designated airplane ID:" />
+                                                <TextField fx:id="flightManRegTfDesignatedPlaneId" />
+                                                <Region prefHeight="200.0" prefWidth="200.0" />
+                                                <HBox alignment="TOP_RIGHT" spacing="10.0" VBox.vgrow="ALWAYS">
+                                                   <children>
+                                                      <Button fx:id="flightManRegBtnClear" mnemonicParsing="false" text="Clear" />
+                                                      <Button fx:id="flightManRegBtnSave" mnemonicParsing="false" text="Save" />
+                                                   </children>
+                                                   <padding>
+                                                      <Insets top="10.0" />
+                                                   </padding>
+                                                </HBox>
+                                             </children>
+                                          </VBox>
+                                       </children>
+                                    </AnchorPane>
+                              </content>
+                            </TitledPane>
+                            <TitledPane animated="false" text="Edit">
+                              <content>
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                       <children>
+                                          <VBox prefHeight="200.0" prefWidth="100.0" spacing="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                             <children>
+                                                <Label text="Insert the flight ID:" />
+                                                <HBox spacing="10.0">
+                                                   <children>
+                                                      <TextField fx:id="flightManEditTfId" HBox.hgrow="ALWAYS" />
+                                                      <Button fx:id="flightManEditBtnSurvey" mnemonicParsing="false" text="Survey" />
+                                                   </children>
+                                                </HBox>
+                                                <Region prefHeight="200.0" prefWidth="200.0" />
+                                                <VBox prefHeight="200.0" prefWidth="100.0" spacing="5.0">
+                                                   <children>
+                                                      <Label text="Origin:" />
+                                                      <TextField fx:id="flightManEditTfOrigin" />
+                                                      <Label text="Destination:" />
+                                                      <TextField fx:id="flightManEditTfDestination" />
+                                                      <Label text="Departure time" />
+                                                      <TextField fx:id="flightManEditTfDepartureTime" />
+                                                      <Label text="Designated airplane ID:" />
+                                                      <TextField fx:id="flightManEditTfDesignatedPlane" />
+                                                      <HBox alignment="TOP_RIGHT" spacing="10.0" VBox.vgrow="ALWAYS">
+                                                         <children>
+                                                            <Button fx:id="flightManEditBtnClear" mnemonicParsing="false" text="Clear" />
+                                                            <Button fx:id="flightManEditBtnSave" mnemonicParsing="false" text="Save" />
+                                                         </children>
+                                                         <padding>
+                                                            <Insets top="10.0" />
+                                                         </padding>
+                                                      </HBox>
+                                                   </children>
+                                                </VBox>
+                                             </children>
+                                          </VBox>
+                                       </children>
+                                    </AnchorPane>
+                              </content>
+                            </TitledPane>
+                            <TitledPane animated="false" text="Delete">
+                              <content>
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                       <children>
+                                          <VBox spacing="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                             <children>
+                                                <Label text="Insert the flight ID:" />
+                                                <HBox spacing="10.0">
+                                                   <children>
+                                                      <TextField fx:id="flightManDelTfId" HBox.hgrow="ALWAYS" />
+                                                      <Button fx:id="flightManDelBtnSurvey" mnemonicParsing="false" text="Survey" />
+                                                   </children>
+                                                </HBox>
+                                                <Region prefHeight="200.0" prefWidth="200.0" />
+                                                <Label text="Origin:" />
+                                                <Label fx:id="flightManDelLabOrigin" text="Label">
+                                                   <font>
+                                                      <Font name="System Bold" size="12.0" />
+                                                   </font>
+                                                   <VBox.margin>
+                                                      <Insets left="10.0" />
+                                                   </VBox.margin>
+                                                </Label>
+                                                <Label text="Destination:" />
+                                                <Label fx:id="flightManDelLabDestination" text="Label">
+                                                   <font>
+                                                      <Font name="System Bold" size="12.0" />
+                                                   </font>
+                                                   <VBox.margin>
+                                                      <Insets left="10.0" />
+                                                   </VBox.margin>
+                                                </Label>
+                                                <Label text="Departure time:" />
+                                                <Label fx:id="flightManDelLabDepartureTime" text="Label">
+                                                   <font>
+                                                      <Font name="System Bold" size="12.0" />
+                                                   </font>
+                                                   <VBox.margin>
+                                                      <Insets left="10.0" />
+                                                   </VBox.margin>
+                                                </Label>
+                                                <Label text="Designated airplane:" />
+                                                <Label fx:id="flightManDelLabDesignatedAirplane" text="Label">
+                                                   <font>
+                                                      <Font name="System Bold" size="12.0" />
+                                                   </font>
+                                                   <VBox.margin>
+                                                      <Insets left="10.0" />
+                                                   </VBox.margin>
+                                                </Label>
+                                                <HBox alignment="TOP_RIGHT" spacing="10.0" VBox.vgrow="ALWAYS">
+                                                   <children>
+                                                      <Button fx:id="flightManDelBtnDelete" mnemonicParsing="false" text="Delete" />
+                                                   </children>
+                                                   <padding>
+                                                      <Insets top="10.0" />
+                                                   </padding>
+                                                </HBox>
+                                             </children>
+                                          </VBox>
+                                       </children>
+                                    </AnchorPane>
+                              </content>
+                            </TitledPane>
+                          </panes>
+                        </Accordion>
+                     </children>
+                  </VBox>
+                  <VBox prefWidth="500.0" spacing="10.0" HBox.hgrow="ALWAYS">
+                     <children>
+                        <Label text="Listing">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <TableView fx:id="flightTab" VBox.vgrow="ALWAYS">
+                          <columns>
+                              <TableColumn fx:id="flightTabClnID" prefWidth="50.0" text="ID" />
+                            <TableColumn fx:id="flightTabClnOrigin" minWidth="20.0" prefWidth="100.0" text="Origin" />
+                            <TableColumn fx:id="flightTabClnDestination" minWidth="20.0" prefWidth="100.0" text="Destination" />
+                              <TableColumn fx:id="flightTabClnDepartureTime" minWidth="20.0" prefWidth="110.0" text="Departure time" />
+                              <TableColumn fx:id="flightTabClnDesignatedAirplane" minWidth="20.0" prefWidth="100.0" text="Airplane" />
+                              <TableColumn fx:id="flightTabClnAvailableSeats" prefWidth="75.0" text="Available" />
+                          </columns>
+                        </TableView>
+                     </children>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </VBox>
+               </children>
+            </HBox>
+            <HBox>
                <children>
                   <Region HBox.hgrow="ALWAYS" />
-                  <Button fx:id="btnClear" mnemonicParsing="false" onAction="#treatClearButton" text="Clear">
-                     <HBox.margin>
-                        <Insets />
-                     </HBox.margin>
-                  </Button>
-                  <Button fx:id="btnSave" mnemonicParsing="false" onAction="#treatSaveButton" text="Save">
-                     <HBox.margin>
-                        <Insets />
-                     </HBox.margin>
-                  </Button>
+                  <Button fx:id="flightTabBtnRefresh" mnemonicParsing="false" text="Refresh" />
                </children>
             </HBox>
          </children>
          <padding>
-            <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
+            <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
          </padding>
       </VBox>
    </children>

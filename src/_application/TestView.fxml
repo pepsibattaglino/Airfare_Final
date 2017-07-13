@@ -55,7 +55,7 @@
                                                 <HBox alignment="TOP_RIGHT" spacing="10.0" VBox.vgrow="ALWAYS">
                                                    <children>
                                                       <Button mnemonicParsing="false" text="Clear" />
-                                                      <Button mnemonicParsing="false" text="Register" />
+                                                      <Button mnemonicParsing="false" text="Save" />
                                                    </children>
                                                    <padding>
                                                       <Insets top="10.0" />
