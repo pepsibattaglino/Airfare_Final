@@ -11,6 +11,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
 <StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="_application.ApplicationController">
    <children>
@@ -29,6 +30,9 @@
                            </image>
                         </ImageView>
                      </graphic>
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
                   </Button>
                   <Button fx:id="btnSales" contentDisplay="TOP" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#callSales" prefHeight="200.0" prefWidth="150.0" text="Sales">
                      <graphic>
@@ -38,6 +42,9 @@
                            </image>
                         </ImageView>
                      </graphic>
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
                   </Button>
                   <Button fx:id="btnFlights" contentDisplay="TOP" layoutX="10.0" layoutY="210.0" mnemonicParsing="false" onAction="#callFlight" prefHeight="200.0" prefWidth="150.0" text="Flights">
                      <graphic>
@@ -47,6 +54,9 @@
                            </image>
                         </ImageView>
                      </graphic>
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
                   </Button>
                   <Button fx:id="btnAirplanes" contentDisplay="TOP" layoutX="10.0" layoutY="202.0" mnemonicParsing="false" onAction="#callAirplane" prefHeight="200.0" prefWidth="150.0" text="Airplanes">
                      <graphic>
@@ -56,15 +66,9 @@
                            </image>
                         </ImageView>
                      </graphic>
-                  </Button>
-                  <Button fx:id="btnTest" contentDisplay="TOP" layoutX="10.0" layoutY="298.0" mnemonicParsing="false" prefHeight="200.0" prefWidth="150.0" text="Placeholder">
-                     <graphic>
-                        <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../images/icons8-Luggage%20Trolley-60.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
                   </Button>
                </children>
             </VBox>
