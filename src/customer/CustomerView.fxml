@@ -18,7 +18,7 @@
    <children>
       <VBox prefHeight="200.0" prefWidth="100.0" spacing="15.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Label text="Airplanes">
+            <Label text="Customers">
                <font>
                   <Font name="System Bold" size="24.0" />
                </font>
@@ -43,17 +43,17 @@
                                        <children>
                                           <VBox prefHeight="200.0" prefWidth="100.0" spacing="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                              <children>
-                                                <Label text="Code:" />
-                                                <TextField fx:id="airplaneManRegTfCode" />
-                                                <Label text="Model:" />
-                                                <TextField fx:id="airplaneManRegTfModel" />
-                                                <Label text="Quantities of seats:" />
-                                                <TextField fx:id="airplaneManRegTfQntSeat" />
+                                                <Label text="Identification:" />
+                                                <TextField fx:id="customerManRegTfIdentification" />
+                                                <Label text="Name:" />
+                                                <TextField fx:id="customerManRegTfName" />
+                                                <Label text="Phone:" />
+                                                <TextField fx:id="customerManRegTfPhone" />
                                                 <Region prefHeight="200.0" prefWidth="200.0" />
                                                 <HBox alignment="TOP_RIGHT" spacing="10.0" VBox.vgrow="ALWAYS">
                                                    <children>
-                                                      <Button fx:id="airplaneManRegBtnClear" mnemonicParsing="false" text="Clear" />
-                                                      <Button fx:id="airplaneManRegBtnSave" mnemonicParsing="false" text="Save" />
+                                                      <Button fx:id="customerManRegBtnClear" mnemonicParsing="false" text="Clear" />
+                                                      <Button fx:id="customerManRegBtnSave" mnemonicParsing="false" text="Save" />
                                                    </children>
                                                    <padding>
                                                       <Insets top="10.0" />
@@ -71,26 +71,26 @@
                                        <children>
                                           <VBox prefHeight="200.0" prefWidth="100.0" spacing="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                              <children>
-                                                <Label text="Insert the airplane ID:" />
+                                                <Label text="Insert the customer ID:" />
                                                 <HBox spacing="10.0">
                                                    <children>
-                                                      <TextField fx:id="airplaneManEditTfId" HBox.hgrow="ALWAYS" />
-                                                      <Button fx:id="airplaneManEditBtnSurvey" mnemonicParsing="false" text="Survey" />
+                                                      <TextField fx:id="customerManEditTfId" HBox.hgrow="ALWAYS" />
+                                                      <Button fx:id="customerManEditBtnSurvey" mnemonicParsing="false" text="Survey" />
                                                    </children>
                                                 </HBox>
                                                 <Region prefHeight="200.0" prefWidth="200.0" />
                                                 <VBox prefHeight="200.0" prefWidth="100.0" spacing="5.0">
                                                    <children>
-                                                      <Label text="Code:" />
-                                                      <TextField fx:id="airplaneManEditTfCode" />
-                                                      <Label text="Model:" />
-                                                      <TextField fx:id="airplaneManEditTfModel" />
-                                                      <Label text="Quantities of seats:" />
-                                                      <TextField fx:id="airplaneManEditTfQntSeats" />
+                                                      <Label text="Identification:" />
+                                                      <TextField fx:id="customerManEditTfIdentification" />
+                                                      <Label text="Name:" />
+                                                      <TextField fx:id="customerManEditTfName" />
+                                                      <Label text="Phone:" />
+                                                      <TextField fx:id="customerManEditTfPhone" />
                                                       <HBox alignment="TOP_RIGHT" spacing="10.0" VBox.vgrow="ALWAYS">
                                                          <children>
-                                                            <Button fx:id="airplaneManEditBtnClear" mnemonicParsing="false" text="Clear" />
-                                                            <Button fx:id="airplaneManEditBtnSave" mnemonicParsing="false" text="Save" />
+                                                            <Button fx:id="customerManEditBtnClear" mnemonicParsing="false" text="Clear" />
+                                                            <Button fx:id="customerManEditBtnSave" mnemonicParsing="false" text="Save" />
                                                          </children>
                                                          <padding>
                                                             <Insets top="10.0" />
@@ -110,16 +110,16 @@
                                        <children>
                                           <VBox spacing="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                              <children>
-                                                <Label text="Insert the airplane ID:" />
+                                                <Label text="Insert the customer ID:" />
                                                 <HBox spacing="10.0">
                                                    <children>
-                                                      <TextField fx:id="airplaneManDelTfId" HBox.hgrow="ALWAYS" />
-                                                      <Button fx:id="airplaneManDelBtnSurvey" mnemonicParsing="false" text="Survey" />
+                                                      <TextField fx:id="customerManDelTfId" HBox.hgrow="ALWAYS" />
+                                                      <Button fx:id="customerManDelBtnSurvey" mnemonicParsing="false" text="Survey" />
                                                    </children>
                                                 </HBox>
                                                 <Region prefHeight="200.0" prefWidth="200.0" />
-                                                <Label text="Code:" />
-                                                <Label text="Label">
+                                                <Label text="Identification:" />
+                                                <Label fx:id="customerManDelLabIdentification" text="Label">
                                                    <font>
                                                       <Font name="System Bold" size="12.0" />
                                                    </font>
@@ -127,8 +127,8 @@
                                                       <Insets left="10.0" />
                                                    </VBox.margin>
                                                 </Label>
-                                                <Label text="Model:" />
-                                                <Label text="Label">
+                                                <Label text="Name:" />
+                                                <Label fx:id="customerManDelLabName" text="Label">
                                                    <font>
                                                       <Font name="System Bold" size="12.0" />
                                                    </font>
@@ -136,8 +136,8 @@
                                                       <Insets left="10.0" />
                                                    </VBox.margin>
                                                 </Label>
-                                                <Label text="Quantities of seats:" />
-                                                <Label text="Label">
+                                                <Label text="Phone:" />
+                                                <Label fx:id="customerManDelLabPhone" text="Label">
                                                    <font>
                                                       <Font name="System Bold" size="12.0" />
                                                    </font>
@@ -147,7 +147,7 @@
                                                 </Label>
                                                 <HBox alignment="TOP_RIGHT" spacing="10.0" VBox.vgrow="ALWAYS">
                                                    <children>
-                                                      <Button fx:id="airplaneManDelBtnDel" mnemonicParsing="false" text="Delete" />
+                                                      <Button fx:id="customerManDelBtnDel" mnemonicParsing="false" text="Delete" />
                                                    </children>
                                                    <padding>
                                                       <Insets top="10.0" />
@@ -170,12 +170,12 @@
                               <Font size="14.0" />
                            </font>
                         </Label>
-                        <TableView fx:id="airplaneTable" VBox.vgrow="ALWAYS">
+                        <TableView fx:id="customerTab" VBox.vgrow="ALWAYS">
                           <columns>
-                            <TableColumn fx:id="airplaneTabClnId" minWidth="20.0" prefWidth="50.0" text="ID" />
-                            <TableColumn fx:id="airplaneTabClnCode" minWidth="20.0" prefWidth="177.0" text="Code" />
-                              <TableColumn fx:id="airplaneTabClnModel" minWidth="20.0" prefWidth="183.0" text="Model" />
-                              <TableColumn fx:id="airplaneTabClnQntSeats" minWidth="20.0" prefWidth="125.0" text="Quantities of seats" />
+                            <TableColumn fx:id="customerTabClnId" minWidth="20.0" prefWidth="50.0" text="ID" />
+                            <TableColumn fx:id="customerTabClnIdentification" minWidth="20.0" prefWidth="177.0" text="Identification" />
+                              <TableColumn fx:id="customerTabClnName" minWidth="20.0" prefWidth="183.0" text="Name" />
+                              <TableColumn fx:id="customerTabClnPhone" minWidth="20.0" prefWidth="125.0" text="Phone" />
                           </columns>
                         </TableView>
                      </children>
@@ -188,7 +188,7 @@
             <HBox>
                <children>
                   <Region HBox.hgrow="ALWAYS" />
-                  <Button fx:id="airplaneTabBtnRefresh" mnemonicParsing="false" text="Refresh" />
+                  <Button fx:id="customerTabBtnRefresh" mnemonicParsing="false" text="Refresh" />
                </children>
             </HBox>
          </children>
